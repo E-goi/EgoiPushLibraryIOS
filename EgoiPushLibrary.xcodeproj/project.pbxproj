@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7783D5B2767831E975AEB1E3 /* Pods_EgoiPushLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A0ABF9DF15D6F4FB377A /* Pods_EgoiPushLibrary.framework */; };
-		B617CFBAB4D0126A05C184B7 /* Pods_EgoiPushExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6BC69F12DB5A82051B3E80 /* Pods_EgoiPushExample.framework */; };
+		B28B80E7ACEE195AB0D7B100 /* Pods_EgoiPushExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6BC69F12DB5A82051B3E80 /* Pods_EgoiPushExample.framework */; };
 		BF63882225B2074200B7677C /* EgoiPushLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = BF63881425B2074100B7677C /* EgoiPushLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF63883625B209D700B7677C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63883525B209D700B7677C /* AppDelegate.swift */; };
 		BF63883825B209D700B7677C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63883725B209D700B7677C /* SceneDelegate.swift */; };
@@ -25,14 +25,14 @@
 		BF63886C25B2100400B7677C /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63886725B2100400B7677C /* NetworkConfiguration.swift */; };
 		BF63886D25B2100400B7677C /* PushNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63886925B2100400B7677C /* PushNetworking.swift */; };
 		BF63887225B2124200B7677C /* EgoiAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63887125B2124200B7677C /* EgoiAppDelegate.swift */; };
-		BF63889C25B2165A00B7677C /* EgoiPushLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF63881125B2074100B7677C /* EgoiPushLibrary.framework */; };
-		BF63889D25B2165A00B7677C /* EgoiPushLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF63881125B2074100B7677C /* EgoiPushLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF6388B125B2176D00B7677C /* EgoiSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6388B025B2176D00B7677C /* EgoiSceneDelegate.swift */; };
 		BF6388D125B58CEA00B7677C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6388D025B58CEA00B7677C /* GoogleService-Info.plist */; };
+		BFAB507F25B5FC54003B161E /* EgoiPushLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF63881125B2074100B7677C /* EgoiPushLibrary.framework */; };
+		BFAB508025B5FC54003B161E /* EgoiPushLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF63881125B2074100B7677C /* EgoiPushLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BF63889E25B2165B00B7677C /* PBXContainerItemProxy */ = {
+		BFAB508125B5FC54003B161E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF63880825B2074100B7677C /* Project object */;
 			proxyType = 1;
@@ -42,13 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BF6388A025B2165B00B7677C /* Embed Frameworks */ = {
+		BFAB508325B5FC54003B161E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BF63889D25B2165A00B7677C /* EgoiPushLibrary.framework in Embed Frameworks */,
+				BFAB508025B5FC54003B161E /* EgoiPushLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +84,7 @@
 		BF6388B025B2176D00B7677C /* EgoiSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgoiSceneDelegate.swift; sourceTree = "<group>"; };
 		BF6388D025B58CEA00B7677C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF6388D425B58CFC00B7677C /* EgoiPushExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EgoiPushExample.entitlements; sourceTree = "<group>"; };
+		BFAB504525B5FB84003B161E /* EgoiPushLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EgoiPushLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6BC69F12DB5A82051B3E80 /* Pods_EgoiPushExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgoiPushExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,8 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF63889C25B2165A00B7677C /* EgoiPushLibrary.framework in Frameworks */,
-				B617CFBAB4D0126A05C184B7 /* Pods_EgoiPushExample.framework in Frameworks */,
+				BFAB507F25B5FC54003B161E /* EgoiPushLibrary.framework in Frameworks */,
+				B28B80E7ACEE195AB0D7B100 /* Pods_EgoiPushExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +123,7 @@
 		787A5292F4F0290B616D6A74 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFAB504525B5FB84003B161E /* EgoiPushLibrary.framework */,
 				EC6BC69F12DB5A82051B3E80 /* Pods_EgoiPushExample.framework */,
 				AAA5A0ABF9DF15D6F4FB377A /* Pods_EgoiPushLibrary.framework */,
 			);
@@ -272,13 +274,13 @@
 				BF63882F25B209D700B7677C /* Sources */,
 				BF63883025B209D700B7677C /* Frameworks */,
 				BF63883125B209D700B7677C /* Resources */,
-				BF6388A025B2165B00B7677C /* Embed Frameworks */,
 				0757EFE41DEBBF76655CBE97 /* [CP] Embed Pods Frameworks */,
+				BFAB508325B5FC54003B161E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BF63889F25B2165B00B7677C /* PBXTargetDependency */,
+				BFAB508225B5FC54003B161E /* PBXTargetDependency */,
 			);
 			name = EgoiPushExample;
 			productName = EgoiPushExample;
@@ -438,10 +440,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BF63889F25B2165B00B7677C /* PBXTargetDependency */ = {
+		BFAB508225B5FC54003B161E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BF63881025B2074100B7677C /* EgoiPushLibrary */;
-			targetProxy = BF63889E25B2165B00B7677C /* PBXContainerItemProxy */;
+			targetProxy = BFAB508125B5FC54003B161E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

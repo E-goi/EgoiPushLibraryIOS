@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "EgoiPushLibrary"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.summary      = "E-goi's Push Notification Library."
 
   # This description is used to generate tags and improve search results.
@@ -116,12 +116,12 @@ This library is responsible for handling all matter related to Push Notification
   #  Link your library with frameworks, or libraries. Libraries do not include
   #  the lib prefix of their name.
   #
+  spec.static_framework = true
+  #spec.framework  = "Firebase"
+  # spec.frameworks = "FirebaseMessaging", "FirebaseAnalytics"
 
-  # spec.framework  = "FirebaseMessaging"
-  # spec.frameworks = "SomeFramework", "AnotherFramework"
-
-  # spec.library   = "FirebaseMessaging"
-  # spec.libraries = "iconv", "xml2"
+  #spec.library   = "Firebase"
+  # spec.libraries = "FirebaseMessaging", "FirebaseAnalytics"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -133,8 +133,6 @@ This library is responsible for handling all matter related to Push Notification
   # spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  spec.dependency "Firebase", "~> 7.4.0"
-  spec.dependency "Firebase/Messaging", "~> 7.4.0"
-  spec.dependency "Firebase/Analytics", "~> 7.4.0"
-
+  spec.dependency "FirebaseMessaging"
+  spec.dependency "FirebaseAnalytics"
 end
