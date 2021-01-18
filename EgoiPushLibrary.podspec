@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "EgoiPushLibrary"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "E-goi's Push Notification Library."
 
   # This description is used to generate tags and improve search results.
@@ -91,8 +91,8 @@ This library is responsible for handling all matter related to Push Notification
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "EgoiPushLibrary", "EgoiPushLibrary/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude"
+  spec.source_files  = "EgoiPushLibrary", "EgoiPushLibrary/**/*.swift"
+  # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
 
