@@ -133,8 +133,8 @@ This library is responsible for handling all matter related to Push Notification
   # spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  spec.dependency "Firebase"
-  spec.dependency "Firebase/Messaging"
-  spec.dependency "Firebase/Analytics"
+  spec.dependency "Firebase", "~> 7.4.0"
+  spec.dependency "Firebase/Messaging", "~> 7.4.0"
+  spec.dependency "Firebase/Analytics", "~> 7.4.0"
 
 end
