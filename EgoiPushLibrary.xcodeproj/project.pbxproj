@@ -3,13 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52F3874901698474EB5928E4 /* Pods_EgoiPushLibrary_EgoiPushLibraryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB3A965068B72668D78CF01 /* Pods_EgoiPushLibrary_EgoiPushLibraryTests.framework */; };
+		7783D5B2767831E975AEB1E3 /* Pods_EgoiPushLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5A0ABF9DF15D6F4FB377A /* Pods_EgoiPushLibrary.framework */; };
 		BF63881B25B2074200B7677C /* EgoiPushLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF63881125B2074100B7677C /* EgoiPushLibrary.framework */; };
 		BF63882025B2074200B7677C /* EgoiPushLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63881F25B2074200B7677C /* EgoiPushLibraryTests.swift */; };
 		BF63882225B2074200B7677C /* EgoiPushLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = BF63881425B2074100B7677C /* EgoiPushLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF63883625B209D700B7677C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63883525B209D700B7677C /* AppDelegate.swift */; };
+		BF63883825B209D700B7677C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63883725B209D700B7677C /* SceneDelegate.swift */; };
+		BF63883A25B209D700B7677C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63883925B209D700B7677C /* ViewController.swift */; };
+		BF63883D25B209D700B7677C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF63883B25B209D700B7677C /* Main.storyboard */; };
+		BF63883F25B209D900B7677C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF63883E25B209D900B7677C /* Assets.xcassets */; };
+		BF63884225B209D900B7677C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF63884025B209D900B7677C /* LaunchScreen.storyboard */; };
+		BF63884B25B20DDD00B7677C /* EgoiPushLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63884A25B20DDD00B7677C /* EgoiPushLibrary.swift */; };
+		BF63885125B20F0600B7677C /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63885025B20F0600B7677C /* LocationHandler.swift */; };
+		BF63885925B20F7F00B7677C /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63885825B20F7F00B7677C /* NotificationHandler.swift */; };
+		BF63885F25B20FCD00B7677C /* EGoiMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63885E25B20FCD00B7677C /* EGoiMessage.swift */; };
+		BF63886A25B2100400B7677C /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63886525B2100400B7677C /* NetworkUtils.swift */; };
+		BF63886B25B2100400B7677C /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63886625B2100400B7677C /* NetworkRequest.swift */; };
+		BF63886C25B2100400B7677C /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63886725B2100400B7677C /* NetworkConfiguration.swift */; };
+		BF63886D25B2100400B7677C /* PushNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63886925B2100400B7677C /* PushNetworking.swift */; };
+		BF63887225B2124200B7677C /* EgoiPushDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63887125B2124200B7677C /* EgoiPushDelegate.swift */; };
+		BF63889C25B2165A00B7677C /* EgoiPushLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF63881125B2074100B7677C /* EgoiPushLibrary.framework */; };
+		BF63889D25B2165A00B7677C /* EgoiPushLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF63881125B2074100B7677C /* EgoiPushLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF6388B125B2176D00B7677C /* EgoiSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6388B025B2176D00B7677C /* EgoiSceneDelegate.swift */; };
+		BF6388D125B58CEA00B7677C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6388D025B58CEA00B7677C /* GoogleService-Info.plist */; };
+		EC58A70F6EA36251D91920A2 /* Pods_EgoiPushExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6BC69F12DB5A82051B3E80 /* Pods_EgoiPushExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,15 +42,65 @@
 			remoteGlobalIDString = BF63881025B2074100B7677C;
 			remoteInfo = EgoiPushLibrary;
 		};
+		BF63889E25B2165B00B7677C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF63880825B2074100B7677C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF63881025B2074100B7677C;
+			remoteInfo = EgoiPushLibrary;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BF6388A025B2165B00B7677C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF63889D25B2165A00B7677C /* EgoiPushLibrary.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		22516B69FF88D516C1740EAD /* Pods-EgoiPushExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgoiPushExample.release.xcconfig"; path = "Target Support Files/Pods-EgoiPushExample/Pods-EgoiPushExample.release.xcconfig"; sourceTree = "<group>"; };
+		37DB39D9E6B3EA3920792EEC /* Pods-EgoiPushLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgoiPushLibrary.debug.xcconfig"; path = "Target Support Files/Pods-EgoiPushLibrary/Pods-EgoiPushLibrary.debug.xcconfig"; sourceTree = "<group>"; };
+		48CAA2B3FAC4E912F5E47EC6 /* Pods-EgoiPushExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgoiPushExample.debug.xcconfig"; path = "Target Support Files/Pods-EgoiPushExample/Pods-EgoiPushExample.debug.xcconfig"; sourceTree = "<group>"; };
+		6F507E8F50489D328E4A503F /* Pods-EgoiPushLibrary-EgoiPushLibraryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgoiPushLibrary-EgoiPushLibraryTests.release.xcconfig"; path = "Target Support Files/Pods-EgoiPushLibrary-EgoiPushLibraryTests/Pods-EgoiPushLibrary-EgoiPushLibraryTests.release.xcconfig"; sourceTree = "<group>"; };
+		9FCE444B78FDBADCD4F2B709 /* Pods-EgoiPushLibrary-EgoiPushLibraryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgoiPushLibrary-EgoiPushLibraryTests.debug.xcconfig"; path = "Target Support Files/Pods-EgoiPushLibrary-EgoiPushLibraryTests/Pods-EgoiPushLibrary-EgoiPushLibraryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AAA5A0ABF9DF15D6F4FB377A /* Pods_EgoiPushLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgoiPushLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B20FF7F86462A695E90B9697 /* Pods-EgoiPushLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgoiPushLibrary.release.xcconfig"; path = "Target Support Files/Pods-EgoiPushLibrary/Pods-EgoiPushLibrary.release.xcconfig"; sourceTree = "<group>"; };
 		BF63881125B2074100B7677C /* EgoiPushLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EgoiPushLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF63881425B2074100B7677C /* EgoiPushLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EgoiPushLibrary.h; sourceTree = "<group>"; };
 		BF63881525B2074100B7677C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF63881A25B2074200B7677C /* EgoiPushLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EgoiPushLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF63881F25B2074200B7677C /* EgoiPushLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgoiPushLibraryTests.swift; sourceTree = "<group>"; };
 		BF63882125B2074200B7677C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF63883325B209D700B7677C /* EgoiPushExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EgoiPushExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF63883525B209D700B7677C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF63883725B209D700B7677C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BF63883925B209D700B7677C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF63883C25B209D700B7677C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF63883E25B209D900B7677C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF63884125B209D900B7677C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF63884325B209D900B7677C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF63884A25B20DDD00B7677C /* EgoiPushLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgoiPushLibrary.swift; sourceTree = "<group>"; };
+		BF63885025B20F0600B7677C /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		BF63885825B20F7F00B7677C /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		BF63885E25B20FCD00B7677C /* EGoiMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EGoiMessage.swift; sourceTree = "<group>"; };
+		BF63886525B2100400B7677C /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
+		BF63886625B2100400B7677C /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		BF63886725B2100400B7677C /* NetworkConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		BF63886925B2100400B7677C /* PushNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNetworking.swift; sourceTree = "<group>"; };
+		BF63887125B2124200B7677C /* EgoiPushDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EgoiPushDelegate.swift; sourceTree = "<group>"; };
+		BF6388B025B2176D00B7677C /* EgoiSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgoiSceneDelegate.swift; sourceTree = "<group>"; };
+		BF6388D025B58CEA00B7677C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF6388D425B58CFC00B7677C /* EgoiPushExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EgoiPushExample.entitlements; sourceTree = "<group>"; };
+		DCB3A965068B72668D78CF01 /* Pods_EgoiPushLibrary_EgoiPushLibraryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgoiPushLibrary_EgoiPushLibraryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC6BC69F12DB5A82051B3E80 /* Pods_EgoiPushExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgoiPushExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7783D5B2767831E975AEB1E3 /* Pods_EgoiPushLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,18 +117,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF63881B25B2074200B7677C /* EgoiPushLibrary.framework in Frameworks */,
+				52F3874901698474EB5928E4 /* Pods_EgoiPushLibrary_EgoiPushLibraryTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF63883025B209D700B7677C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF63889C25B2165A00B7677C /* EgoiPushLibrary.framework in Frameworks */,
+				EC58A70F6EA36251D91920A2 /* Pods_EgoiPushExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		114FC472FC84E169F13ECC7C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48CAA2B3FAC4E912F5E47EC6 /* Pods-EgoiPushExample.debug.xcconfig */,
+				22516B69FF88D516C1740EAD /* Pods-EgoiPushExample.release.xcconfig */,
+				37DB39D9E6B3EA3920792EEC /* Pods-EgoiPushLibrary.debug.xcconfig */,
+				B20FF7F86462A695E90B9697 /* Pods-EgoiPushLibrary.release.xcconfig */,
+				9FCE444B78FDBADCD4F2B709 /* Pods-EgoiPushLibrary-EgoiPushLibraryTests.debug.xcconfig */,
+				6F507E8F50489D328E4A503F /* Pods-EgoiPushLibrary-EgoiPushLibraryTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		787A5292F4F0290B616D6A74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC6BC69F12DB5A82051B3E80 /* Pods_EgoiPushExample.framework */,
+				AAA5A0ABF9DF15D6F4FB377A /* Pods_EgoiPushLibrary.framework */,
+				DCB3A965068B72668D78CF01 /* Pods_EgoiPushLibrary_EgoiPushLibraryTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF63880725B2074100B7677C = {
 			isa = PBXGroup;
 			children = (
 				BF63881325B2074100B7677C /* EgoiPushLibrary */,
 				BF63881E25B2074200B7677C /* EgoiPushLibraryTests */,
+				BF63883425B209D700B7677C /* EgoiPushExample */,
 				BF63881225B2074100B7677C /* Products */,
+				114FC472FC84E169F13ECC7C /* Pods */,
+				787A5292F4F0290B616D6A74 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +173,7 @@
 			children = (
 				BF63881125B2074100B7677C /* EgoiPushLibrary.framework */,
 				BF63881A25B2074200B7677C /* EgoiPushLibraryTests.xctest */,
+				BF63883325B209D700B7677C /* EgoiPushExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,8 +181,14 @@
 		BF63881325B2074100B7677C /* EgoiPushLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				BF63886325B2100400B7677C /* Network */,
+				BF63885D25B20FB100B7677C /* Structures */,
+				BF63884F25B20ED600B7677C /* Handlers */,
 				BF63881425B2074100B7677C /* EgoiPushLibrary.h */,
 				BF63881525B2074100B7677C /* Info.plist */,
+				BF63884A25B20DDD00B7677C /* EgoiPushLibrary.swift */,
+				BF63887125B2124200B7677C /* EgoiPushDelegate.swift */,
+				BF6388B025B2176D00B7677C /* EgoiSceneDelegate.swift */,
 			);
 			path = EgoiPushLibrary;
 			sourceTree = "<group>";
@@ -84,6 +200,66 @@
 				BF63882125B2074200B7677C /* Info.plist */,
 			);
 			path = EgoiPushLibraryTests;
+			sourceTree = "<group>";
+		};
+		BF63883425B209D700B7677C /* EgoiPushExample */ = {
+			isa = PBXGroup;
+			children = (
+				BF6388D425B58CFC00B7677C /* EgoiPushExample.entitlements */,
+				BF6388D025B58CEA00B7677C /* GoogleService-Info.plist */,
+				BF63883525B209D700B7677C /* AppDelegate.swift */,
+				BF63883725B209D700B7677C /* SceneDelegate.swift */,
+				BF63883925B209D700B7677C /* ViewController.swift */,
+				BF63883B25B209D700B7677C /* Main.storyboard */,
+				BF63883E25B209D900B7677C /* Assets.xcassets */,
+				BF63884025B209D900B7677C /* LaunchScreen.storyboard */,
+				BF63884325B209D900B7677C /* Info.plist */,
+			);
+			path = EgoiPushExample;
+			sourceTree = "<group>";
+		};
+		BF63884F25B20ED600B7677C /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				BF63885025B20F0600B7677C /* LocationHandler.swift */,
+				BF63885825B20F7F00B7677C /* NotificationHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		BF63885D25B20FB100B7677C /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				BF63885E25B20FCD00B7677C /* EGoiMessage.swift */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
+		BF63886325B2100400B7677C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BF63886425B2100400B7677C /* Core */,
+				BF63886825B2100400B7677C /* Requests */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BF63886425B2100400B7677C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BF63886525B2100400B7677C /* NetworkUtils.swift */,
+				BF63886625B2100400B7677C /* NetworkRequest.swift */,
+				BF63886725B2100400B7677C /* NetworkConfiguration.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BF63886825B2100400B7677C /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				BF63886925B2100400B7677C /* PushNetworking.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +280,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF63882525B2074200B7677C /* Build configuration list for PBXNativeTarget "EgoiPushLibrary" */;
 			buildPhases = (
+				CE3BA82A2990920AABBB0008 /* [CP] Check Pods Manifest.lock */,
 				BF63880C25B2074100B7677C /* Headers */,
 				BF63880D25B2074100B7677C /* Sources */,
 				BF63880E25B2074100B7677C /* Frameworks */,
@@ -122,9 +299,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF63882825B2074200B7677C /* Build configuration list for PBXNativeTarget "EgoiPushLibraryTests" */;
 			buildPhases = (
+				B417B75EA97D36DF5F85DE30 /* [CP] Check Pods Manifest.lock */,
 				BF63881625B2074200B7677C /* Sources */,
 				BF63881725B2074200B7677C /* Frameworks */,
 				BF63881825B2074200B7677C /* Resources */,
+				4CFB9BC0EBE158B3B2DBD356 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +314,27 @@
 			productName = EgoiPushLibraryTests;
 			productReference = BF63881A25B2074200B7677C /* EgoiPushLibraryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF63883225B209D700B7677C /* EgoiPushExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF63884425B209D900B7677C /* Build configuration list for PBXNativeTarget "EgoiPushExample" */;
+			buildPhases = (
+				B676137E15A0B85A79BCB5A9 /* [CP] Check Pods Manifest.lock */,
+				BF63882F25B209D700B7677C /* Sources */,
+				BF63883025B209D700B7677C /* Frameworks */,
+				BF63883125B209D700B7677C /* Resources */,
+				BF6388A025B2165B00B7677C /* Embed Frameworks */,
+				0757EFE41DEBBF76655CBE97 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF63889F25B2165B00B7677C /* PBXTargetDependency */,
+			);
+			name = EgoiPushExample;
+			productName = EgoiPushExample;
+			productReference = BF63883325B209D700B7677C /* EgoiPushExample.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -147,8 +347,12 @@
 				TargetAttributes = {
 					BF63881025B2074100B7677C = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 					};
 					BF63881925B2074200B7677C = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					BF63883225B209D700B7677C = {
 						CreatedOnToolsVersion = 12.3;
 					};
 				};
@@ -168,6 +372,7 @@
 			targets = (
 				BF63881025B2074100B7677C /* EgoiPushLibrary */,
 				BF63881925B2074200B7677C /* EgoiPushLibraryTests */,
+				BF63883225B209D700B7677C /* EgoiPushExample */,
 			);
 		};
 /* End PBXProject section */
@@ -187,13 +392,137 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BF63883125B209D700B7677C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF63884225B209D900B7677C /* LaunchScreen.storyboard in Resources */,
+				BF6388D125B58CEA00B7677C /* GoogleService-Info.plist in Resources */,
+				BF63883F25B209D900B7677C /* Assets.xcassets in Resources */,
+				BF63883D25B209D700B7677C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0757EFE41DEBBF76655CBE97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EgoiPushExample/Pods-EgoiPushExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EgoiPushExample/Pods-EgoiPushExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EgoiPushExample/Pods-EgoiPushExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CFB9BC0EBE158B3B2DBD356 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EgoiPushLibrary-EgoiPushLibraryTests/Pods-EgoiPushLibrary-EgoiPushLibraryTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EgoiPushLibrary-EgoiPushLibraryTests/Pods-EgoiPushLibrary-EgoiPushLibraryTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EgoiPushLibrary-EgoiPushLibraryTests/Pods-EgoiPushLibrary-EgoiPushLibraryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B417B75EA97D36DF5F85DE30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EgoiPushLibrary-EgoiPushLibraryTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B676137E15A0B85A79BCB5A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EgoiPushExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE3BA82A2990920AABBB0008 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EgoiPushLibrary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF63880D25B2074100B7677C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF63884B25B20DDD00B7677C /* EgoiPushLibrary.swift in Sources */,
+				BF63885F25B20FCD00B7677C /* EGoiMessage.swift in Sources */,
+				BF63886A25B2100400B7677C /* NetworkUtils.swift in Sources */,
+				BF63885925B20F7F00B7677C /* NotificationHandler.swift in Sources */,
+				BF63887225B2124200B7677C /* EgoiPushDelegate.swift in Sources */,
+				BF63886C25B2100400B7677C /* NetworkConfiguration.swift in Sources */,
+				BF63886B25B2100400B7677C /* NetworkRequest.swift in Sources */,
+				BF63885125B20F0600B7677C /* LocationHandler.swift in Sources */,
+				BF63886D25B2100400B7677C /* PushNetworking.swift in Sources */,
+				BF6388B125B2176D00B7677C /* EgoiSceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +534,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BF63882F25B209D700B7677C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF63883A25B209D700B7677C /* ViewController.swift in Sources */,
+				BF63883625B209D700B7677C /* AppDelegate.swift in Sources */,
+				BF63883825B209D700B7677C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -213,7 +552,31 @@
 			target = BF63881025B2074100B7677C /* EgoiPushLibrary */;
 			targetProxy = BF63881C25B2074200B7677C /* PBXContainerItemProxy */;
 		};
+		BF63889F25B2165B00B7677C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF63881025B2074100B7677C /* EgoiPushLibrary */;
+			targetProxy = BF63889E25B2165B00B7677C /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF63883B25B209D700B7677C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF63883C25B209D700B7677C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF63884025B209D900B7677C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF63884125B209D900B7677C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BF63882325B2074200B7677C /* Debug */ = {
@@ -340,7 +703,9 @@
 		};
 		BF63882625B2074200B7677C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37DB39D9E6B3EA3920792EEC /* Pods-EgoiPushLibrary.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = SBJP4UQ347;
@@ -357,14 +722,18 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.egoi.EgoiPushLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		BF63882725B2074200B7677C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B20FF7F86462A695E90B9697 /* Pods-EgoiPushLibrary.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = SBJP4UQ347;
@@ -381,14 +750,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.egoi.EgoiPushLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		BF63882925B2074200B7677C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FCE444B78FDBADCD4F2B709 /* Pods-EgoiPushLibrary-EgoiPushLibraryTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SBJP4UQ347;
 				INFOPLIST_FILE = EgoiPushLibraryTests/Info.plist;
@@ -406,7 +778,9 @@
 		};
 		BF63882A25B2074200B7677C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F507E8F50489D328E4A503F /* Pods-EgoiPushLibrary-EgoiPushLibraryTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SBJP4UQ347;
 				INFOPLIST_FILE = EgoiPushLibraryTests/Info.plist;
@@ -419,6 +793,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BF63884525B209D900B7677C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48CAA2B3FAC4E912F5E47EC6 /* Pods-EgoiPushExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EgoiPushExample/EgoiPushExample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SBJP4UQ347;
+				INFOPLIST_FILE = EgoiPushExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.egoi.EgoiPushExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		BF63884625B209D900B7677C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22516B69FF88D516C1740EAD /* Pods-EgoiPushExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EgoiPushExample/EgoiPushExample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SBJP4UQ347;
+				INFOPLIST_FILE = EgoiPushExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.egoi.EgoiPushExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -448,6 +864,15 @@
 			buildConfigurations = (
 				BF63882925B2074200B7677C /* Debug */,
 				BF63882A25B2074200B7677C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF63884425B209D900B7677C /* Build configuration list for PBXNativeTarget "EgoiPushExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF63884525B209D900B7677C /* Debug */,
+				BF63884625B209D900B7677C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
