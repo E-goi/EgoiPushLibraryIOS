@@ -27,9 +27,9 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
     }
     
     /// Handle user response to location access request
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        if locationManager.authorizationStatus == .authorizedWhenInUse || locationManager.authorizationStatus == .authorizedAlways {
-            locationManager.startUpdatingLocation()
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            manager.startUpdatingLocation()
         }
     }
     

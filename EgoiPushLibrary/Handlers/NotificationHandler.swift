@@ -244,9 +244,9 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         DispatchQueue.main.async {
             let rootViewController: UIViewController?
             
-            if let delegate = UIApplication.shared.delegate as? EgoiPushDelegate, let window = delegate.window {
+            if let delegate = UIApplication.shared.delegate as? EgoiAppDelegate, let window = delegate.window {
                 rootViewController = window.rootViewController
-            } else if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? EgoiSceneDelegate, let window = sceneDelegate.window {
+            } else if #available(iOS 13.0, *), let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? EgoiSceneDelegate, let window = sceneDelegate.window {
                 rootViewController = window.rootViewController
             } else {
                 return

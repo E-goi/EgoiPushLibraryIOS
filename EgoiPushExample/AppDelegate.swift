@@ -9,7 +9,7 @@ import UIKit
 import EgoiPushLibrary
 
 @main
-class AppDelegate: EgoiPushDelegate {
+class AppDelegate: EgoiAppDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         EgoiPushLibrary.shared.config(

@@ -16,8 +16,8 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "EgoiPushLibrary"
-  spec.version      = "0.0.1"
-  spec.summary      = "This library is responsible for handling all matter related to Push Notifications received from E-goi."
+  spec.version      = "1.0.0"
+  spec.summary      = "E-goi's Push Notification Library."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -64,11 +64,11 @@ This library is responsible for handling all matter related to Push Notification
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  spec.platform     = :ios
-  # spec.platform     = :ios, "5.0"
+  # spec.platform     = :ios
+  spec.platform     = :ios, "12.0"
 
   #  When using multiple platforms
-  spec.ios.deployment_target = "12.0"
+  # spec.ios.deployment_target = "12.0"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
@@ -91,7 +91,7 @@ This library is responsible for handling all matter related to Push Notification
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+  spec.source_files  = "EgoiPushLibrary", "EgoiPushLibrary/**/*.{h,m}"
   spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
@@ -117,10 +117,10 @@ This library is responsible for handling all matter related to Push Notification
   #  the lib prefix of their name.
   #
 
-  # spec.framework  = "SomeFramework"
+  # spec.framework  = "FirebaseMessaging"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 
-  # spec.library   = "iconv"
+  # spec.library   = "FirebaseMessaging"
   # spec.libraries = "iconv", "xml2"
 
 
@@ -133,6 +133,8 @@ This library is responsible for handling all matter related to Push Notification
   # spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # spec.dependency "JSONKit", "~> 1.4"
+  spec.dependency "Firebase"
+  spec.dependency "Firebase/Messaging"
+  spec.dependency "Firebase/Analytics"
 
 end

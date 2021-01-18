@@ -192,7 +192,7 @@ This application makes use of the following third party libraries:
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -206,6 +206,10 @@ This application makes use of the following third party libraries:
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+## FirebaseAnalytics
+
+Copyright 2021 Google
 
 ## FirebaseCore
 
@@ -398,7 +402,7 @@ This application makes use of the following third party libraries:
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -604,7 +608,7 @@ This application makes use of the following third party libraries:
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -810,7 +814,7 @@ This application makes use of the following third party libraries:
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1016,7 +1020,7 @@ This application makes use of the following third party libraries:
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1222,7 +1226,7 @@ This application makes use of the following third party libraries:
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1236,6 +1240,10 @@ This application makes use of the following third party libraries:
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+## GoogleAppMeasurement
+
+Copyright 2021 Google
 
 ## GoogleDataTransport
 
@@ -1428,7 +1436,7 @@ This application makes use of the following third party libraries:
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
