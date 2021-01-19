@@ -1,0 +1,22 @@
+{
+  "name": "EgoiPushLibrary",
+  "version": "0.1.0",
+  "summary": "A short description of EgoiPushLibrary.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/João Silva/EgoiPushLibrary",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "João Silva": "jsilva@e-goi.com"
+  },
+  "source": {
+    "git": "https://github.com/João Silva/EgoiPushLibrary.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "EgoiPushLibrary/Classes/**/*"
+}
