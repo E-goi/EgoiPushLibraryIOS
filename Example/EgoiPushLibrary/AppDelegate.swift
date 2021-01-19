@@ -20,7 +20,10 @@ class AppDelegate: EgoiAppDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
-        EgoiPushLibrary.shared.config(appId: 4867, apiKey: "a411902635c2d794df1488bf9fc32a4814eb266e")
+//        EgoiPushLibrary.shared.config(
+//            appId: /* Your app id goes here */,
+//            apiKey: /* Your api key goes here */
+//        )
         
         return true
     }
