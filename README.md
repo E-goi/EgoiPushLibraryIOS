@@ -67,7 +67,7 @@ class AppDelegate: EgoiAppDelegate {
 
 Still in the **AppDelegate.swift**, you can send the Firebase token to the library with the following code:
 
-```
+```swift
 extension AppDelegate : MessagingDelegate {
     
     public func messaging(
@@ -137,7 +137,7 @@ Responsible for initializing the library. The call of this method is required.
 
 You should call this method everytime a new Firebase token is generated. The token is saved on the library and, if the user is already registered on your E-goi list, updates the token automatically.
 
-<table style="text-align: center">
+<table style="text-align: center;">
 <thead>
 <tr>
    <th>Property</th>
@@ -158,6 +158,49 @@ You should call this method everytime a new Firebase token is generated. The tok
 </tbody>
 </table>
 
+#### EgoiPushLibrary.shared.processNotification()
+
+This method processes the received remote notification. If the remote notification is a geopush, creates a geofence that triggers a local notification when the user enters teh region. If it is a normal notification, shows the notification and opens a dialog with the actions defined in E-goi when the user opens thr notification banner.
+
+This method is already called inside the didReceiveRemoteNotification implemented in **EgoiAppDelegate.swift**.
+
+<table style="text-align: center;">
+<thead>
+<tr>
+   <th>Property</th>
+   <th>Type</th>
+   <th>Description</th>
+   <th>Required</th>
+   <th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+   <td>userInfo</td>
+   <td>[AnyHashable : Any]</td>
+   <td>The data of the notification.</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+<tr>
+   <td>callback</td>
+   <td>@escaping (UIBackgroundFetchResult) -> Void</td>
+   <td>The callback that will be called when the processing of the notification is finished.</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+</tbody>
+</table>
+
+### Actions
+
+#### EgoiPushLibrary.shared.requestForegroundLocationAccess()
+
+Requests the user permission to access the location when the app is in foreground (displaying on screen).
+
+#### EgoiPushLibrary.shared.requestBackgroundLocationAccess()
+
+Requests the user permission to access the location when the app is in background (minimized or closed).
 
 ## Author
 
