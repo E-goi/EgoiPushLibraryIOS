@@ -1,6 +1,0 @@
-framework module EgoiPushLibrary {
-  umbrella header "EgoiPushLibrary-umbrella.h"
-
-  export *
-  module * { export * }
-}

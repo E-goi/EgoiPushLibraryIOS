@@ -1,24 +1,163 @@
 # EgoiPushLibrary
 
-[![CI Status](https://img.shields.io/travis/João Silva/EgoiPushLibrary.svg?style=flat)](https://travis-ci.org/João Silva/EgoiPushLibrary)
 [![Version](https://img.shields.io/cocoapods/v/EgoiPushLibrary.svg?style=flat)](https://cocoapods.org/pods/EgoiPushLibrary)
 [![License](https://img.shields.io/cocoapods/l/EgoiPushLibrary.svg?style=flat)](https://cocoapods.org/pods/EgoiPushLibrary)
 [![Platform](https://img.shields.io/cocoapods/p/EgoiPushLibrary.svg?style=flat)](https://cocoapods.org/pods/EgoiPushLibrary)
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, follow the steps below:
+
+1. Clone the repository;<br><br>
+2. Run `pod install` from the Example directory;<br><br>
+3. Open the file <b>EgoiPushLibrary.xcodeproj</b>;<br><br>
+4. Register the app in your Firebase project. Don't know how to do it? Read this article;<br><br>
+5. Place the <b>GoogleService-Info.plist</b> generated in the folder <b>Example for EgoiPushLibrary/Supporting Files</b>;<br><br>
+6. In the file <b>AppDelegate.swift</b> uncomment the lines of code inside the method <b>didFinishLaunchingWithOptions</b> and fill the placeholders with the data from your E-goi account:<br>
+   ```swift
+   EgoiPushLibrary.shared.config(
+       appId: /* Your app id goes here */,
+       apiKey: /* Your api key goes here */
+   )
+   ```
+7. Run the app in a physical device (simulators can't receive remote push notification).
 
 ## Requirements
 
+To use this library you must have Firebase configured in your app. [Don't know how to do it? Read this article](https://firebase.google.com/docs/cloud-messaging/ios/client).
+<br><small><b>Note:</b> Since the main objective of this library is to handle push notifications, the only Pod that is required for it to work is `pod 'Firebase/Messaging'`.</small>
+
+You must also have an APNs key inserted on the Firebase App. [Read more here](https://firebase.google.com/docs/cloud-messaging/ios/certs).
+
+You must also have an [E-goi account](https://login.egoiapp.com/signup/email) with a [Push application configured]().
+
 ## Installation
 
-EgoiPushLibrary is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+EgoiPushLibrary is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'EgoiPushLibrary'
 ```
+
+After installing, you can initialize the library in the **AppDelegate.swift** with following instruction:
+
+```swift
+import EgoiPushLibrary
+
+class AppDelegate: EgoiAppDelegate {
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+            
+        EgoiPushLibrary.shared.config(
+            appId: /* (int) (required) */,
+            apiKey: /* (string) (required) */,
+            geoEnabled: /* (boolean) (optional / defaults to true) */,
+            dialogCloseLabel: /* (string) (optional / defaults to "Close") */
+        )
+            
+        return true
+    }
+}
+```
+
+Still in the **AppDelegate.swift**, you can send the Firebase token to the library with the following code:
+
+```
+extension AppDelegate : MessagingDelegate {
+    
+    public func messaging(
+        _ messaging: Messaging,
+        didReceiveRegistrationToken fcmToken: String?
+    ) {
+        guard let token = fcmToken else {
+            return
+        }
+        
+        EgoiPushLibrary.shared.addFCMToken(token: token)
+    }
+}
+```
+
+## References
+
+### Configurations
+
+#### EgoiPushLibrary.shared.config()
+
+Responsible for initializing the library. The call of this method is required.
+
+<table style="text-align: center">
+<thead>
+<tr>
+   <th>Property</th>
+   <th>Type</th>
+   <th>Description</th>
+   <th>Required</th>
+   <th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+   <td>appId</td>
+   <td>int</td>
+   <td>The ID of the app created on the E-goi account.</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+<tr>
+   <td>apiKey</td>
+   <td>string</td>
+   <td>The API key of your E-goi account.</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+<tr>
+   <td>geoEnabled</td>
+   <td>boolean</td>
+   <td>Flag that enables or disabled location related functionalities.</td>
+   <td>false</td>
+   <td>true</td>
+</tr>
+<tr>
+   <td>dialogCloseLabel</td>
+   <td>string</td>
+   <td>String to apply to the close button of the dialog that the library triggers.</td>
+   <td>false</td>
+   <td>"Close"</td>
+</tr>
+</tbody>
+</table>
+
+#### EgoiPushLibrary.shared.addFCMToken()
+
+You should call this method everytime a new Firebase token is generated. The token is saved on the library and, if the user is already registered on your E-goi list, updates the token automatically.
+
+<table style="text-align: center">
+<thead>
+<tr>
+   <th>Property</th>
+   <th>Type</th>
+   <th>Description</th>
+   <th>Required</th>
+   <th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+   <td>token</td>
+   <td>string</td>
+   <td>The token generated by Firebase.</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+</tbody>
+</table>
+
 
 ## Author
 
