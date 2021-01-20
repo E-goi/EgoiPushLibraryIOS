@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "EgoiPushLibrary"
-  s.version          = "1.0.10"
+  s.version          = "1.0.11"
   s.summary          = "E-goi's Push Notification Library."
 
   s.description      = <<-DESC
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.homepage         = "https://github.com/E-goi/EgoiPushLibrary"
   s.license          = { :type => "MIT", :file => "LICENSE" }
-  s.author           = { "João Silva" => "jsilva@e-goi.com" }
+  s.author           = { "E-goi" => "integrations@e-goi.com" }
   s.source           = { :git => "https://github.com/E-goi/EgoiPushLibrary.git", :tag => s.version.to_s }
 
   s.ios.deployment_target = "12.0"
