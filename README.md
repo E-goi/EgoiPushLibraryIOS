@@ -253,7 +253,7 @@ Registers the Firebase token on the E-goi list. You only need to call this metho
 
 ## Author
 
-João Silva, jsilva@e-goi.com
+E-goi, integrations@e-goi.com
 
 ## License
 
