@@ -49,6 +49,8 @@ pod 'EgoiPushLibrary'
 
 After installing, you can initialize the library in the **AppDelegate.swift** with following instruction:
 
+**Note:** Your AppDelegate should extend our EgoiAppDelegate instead of the UIResponder, UIApplicationDelegate. If you are using a SceneDelegate, you must also extend ou EgoiSceneDelegate. This is a way for us to process logic so you don't have to, like processing the received remote notifications, and it allows us to display Alerts in your app.
+
 ```swift
 import EgoiPushLibrary
 
