@@ -206,7 +206,7 @@ This method is already called inside the didReceiveRemoteNotification implemente
 
 #### EgoiPushLibrary.shared.requestForegroundLocationAccess()
 
-Requests the user permission to access the location when the app is in foreground (displaying on screen).
+Requests the user permission to access the location when the app is in the foreground (displaying on screen).
 
 #### EgoiPushLibrary.shared.requestBackgroundLocationAccess()
 
