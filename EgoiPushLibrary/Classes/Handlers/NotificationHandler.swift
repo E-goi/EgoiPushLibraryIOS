@@ -225,7 +225,9 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
                     EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
                     
                     if (type == "deeplink") {
-                        
+                        if let callback = EgoiPushLibrary.shared.deepLinkCallBack, let link = message.data.actions.url {
+                            callback(link)
+                        }
                     } else {
                         if let url = URL(string: url) {
                             DispatchQueue.main.async {

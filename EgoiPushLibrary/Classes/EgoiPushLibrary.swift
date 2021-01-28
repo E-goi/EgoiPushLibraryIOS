@@ -22,6 +22,7 @@ public final class EgoiPushLibrary {
     var dialogCloseLabel: String?
     
     var geoEnabled: Bool = true
+    var deepLinkCallBack: ((String) -> Void)?
     
     /// Initiate the E-goi's library
     /// - Parameters:
@@ -29,16 +30,19 @@ public final class EgoiPushLibrary {
     ///   - apiKey: The API Key of the E-goi's account
     ///   - geoEnabled: Enable the geolocation functionality
     ///   - dialogCloseLabel: Label to show on the button of the notification alert
+    ///   - deepLinkCallBack: Callback to be invoked when the action type of the notification is a deeplink
     public func config(
         appId: Int,
         apiKey: String,
         geoEnabled: Bool = true,
-        dialogCloseLabel: String = "Close"
+        dialogCloseLabel: String = "Close",
+        deepLinkCallBack: @escaping (String) -> Void
     ) {
         self.appId = appId
         self.apiKey = apiKey
         self.geoEnabled = geoEnabled
         self.dialogCloseLabel = dialogCloseLabel
+        self.deepLinkCallBack = deepLinkCallBack
         
         // Initialize Handlers
         notificationHandler = NotificationHandler()

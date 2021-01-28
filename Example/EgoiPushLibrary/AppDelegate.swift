@@ -20,10 +20,14 @@ class AppDelegate: EgoiAppDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
-//        EgoiPushLibrary.shared.config(
-//            appId: /* Your app id goes here */,
-//            apiKey: /* Your api key goes here */
-//        )
+        EgoiPushLibrary.shared.config(
+            appId: 123,
+            apiKey: "abc",
+            deepLinkCallBack: { link in
+                
+            }
+                
+        )
         
         return true
     }
