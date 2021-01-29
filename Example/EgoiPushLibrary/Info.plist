@@ -22,6 +22,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Location required for geofencing</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location required for geofencing</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -34,15 +44,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-		<string>processing</string>
-		<string>remote-notification</string>
-	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location required for geofencing</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location required for geofencing</string>
 </dict>
 </plist>

@@ -1,3 +1,4 @@
 .DS_Store
 Example/Pods/
 *.xcuserstate
+GoogleService-Info.plist
