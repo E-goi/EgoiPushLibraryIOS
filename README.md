@@ -4,24 +4,6 @@
 [![License](https://img.shields.io/cocoapods/l/EgoiPushLibrary.svg?style=flat)](https://cocoapods.org/pods/EgoiPushLibrary)
 [![Platform](https://img.shields.io/cocoapods/p/EgoiPushLibrary.svg?style=flat)](https://cocoapods.org/pods/EgoiPushLibrary)
 
-## Example
-
-To run the example project, follow the steps below:
-
-1. Clone the repository;<br><br>
-2. Run `pod install` from the Example directory;<br><br>
-3. Open the file <b>EgoiPushLibrary.xcodeproj</b>;<br><br>
-4. Register the app in your Firebase project. Don't know how to do it? Read this article;<br><br>
-5. Place the <b>GoogleService-Info.plist</b> generated in the folder <b>Example for EgoiPushLibrary/Supporting Files</b>;<br><br>
-6. In the file <b>AppDelegate.swift</b> uncomment the lines of code inside the method <b>didFinishLaunchingWithOptions</b> and fill the placeholders with the data from your E-goi account:<br>
-   ```swift
-   EgoiPushLibrary.shared.config(
-       appId: /* Your app id goes here */,
-       apiKey: /* Your api key goes here */
-   )
-   ```
-7. Run the app in a physical device (simulators can't receive remote push notification).
-
 ## Requirements
 
 To use this library you must have Firebase configured in your app. [Don't know how to do it? Read this article](https://firebase.google.com/docs/cloud-messaging/ios/client).

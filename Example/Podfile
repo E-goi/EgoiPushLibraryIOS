@@ -5,5 +5,5 @@ platform :ios, '12.0'
 target 'EgoiPushLibrary_Example' do
   pod 'Firebase/Messaging', '~>7.4.0'
   pod 'Firebase/Analytics', '~>7.4.0'
-  pod 'EgoiPushLibrary', :path => '../'
+  pod 'EgoiPushLibrary'
 end
