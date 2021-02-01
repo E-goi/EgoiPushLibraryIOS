@@ -166,7 +166,7 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         }
         
         if let applicationId = userInfo["application-id"] as? String {
-            message.data.applicationId = Int(applicationId)
+            message.data.applicationId = applicationId
         }
         
         if let messageId = userInfo["message-id"] as? String {

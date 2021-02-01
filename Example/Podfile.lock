@@ -80,12 +80,13 @@ PODS:
   - PromisesObjC (1.2.12)
 
 DEPENDENCIES:
-  - EgoiPushLibrary (from `../`)
-  - Firebase/Analytics (~> 7.4.0)
-  - Firebase/Messaging (~> 7.4.0)
+  - EgoiPushLibrary
+  - Firebase/Analytics
+  - Firebase/Messaging
 
 SPEC REPOS:
   trunk:
+    - EgoiPushLibrary
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -98,10 +99,6 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
-
-EXTERNAL SOURCES:
-  EgoiPushLibrary:
-    :path: "../"
 
 SPEC CHECKSUMS:
   EgoiPushLibrary: d07587d930e02923cd54eae1f2773fe77268135a
@@ -118,6 +115,6 @@ SPEC CHECKSUMS:
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 590b572d6a1923361961d88a8b1938ccd8430ed7
+PODFILE CHECKSUM: a4beb146d3d1bbd2e24d5835490552f9dc822ebe
 
 COCOAPODS: 1.10.1

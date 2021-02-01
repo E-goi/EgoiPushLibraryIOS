@@ -17,7 +17,7 @@ public final class EgoiPushLibrary {
     
     public static let shared = EgoiPushLibrary()
     
-    var appId: Int?
+    var appId: String?
     var apiKey: String?
     var dialogCloseLabel: String?
     
@@ -32,7 +32,7 @@ public final class EgoiPushLibrary {
     ///   - dialogCloseLabel: Label to show on the button of the notification alert
     ///   - deepLinkCallBack: Callback to be invoked when the action type of the notification is a deeplink
     public func config(
-        appId: Int,
+        appId: String,
         apiKey: String,
         geoEnabled: Bool = true,
         dialogCloseLabel: String = "Close",

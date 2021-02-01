@@ -16,7 +16,7 @@ final class PushNetworking {
     ///   - token: the device token (string)
     ///   - callback: the success result of the request
     static func sendToken(
-        appId: Int,
+        appId: String,
         apiKey: String,
         field: String?,
         value: String?,
@@ -82,7 +82,7 @@ final class PushNetworking {
     ///   - event: the event to send to the server
     ///   - callback: the callback
     static func sendEvent(
-        appId: Int,
+        appId: String,
         apiKey: String,
         contactID: String,
         messageHash: String,
