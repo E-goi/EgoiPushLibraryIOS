@@ -303,7 +303,7 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         
         content.userInfo = ["key": message.data.messageHash!]
         
-        if let image = message.notification.image {
+        if let image = message.notification.image, image != "" {
             guard let data = try? Data(contentsOf: URL(string: image)!) else {
                 return nil
             }

@@ -46,7 +46,7 @@ class AppDelegate: EgoiAppDelegate {
         Messaging.messaging().delegate = self
             
         EgoiPushLibrary.shared.config(
-            appId: /* (int) (required) */,
+            appId: /* (string) (required) */,
             apiKey: /* (string) (required) */,
             geoEnabled: /* (boolean) (optional / defaults to true) */,
             dialogCloseLabel: /* (string) (optional / defaults to "Close") */
@@ -96,7 +96,7 @@ Responsible for initializing the library. The call of this method is required.
 <tbody>
 <tr>
    <td>appId</td>
-   <td>Int</td>
+   <td>String</td>
    <td>The ID of the app created on the E-goi account.</td>
    <td>true</td>
    <td>---</td>
