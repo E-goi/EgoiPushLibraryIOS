@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func registerToken() {
-        EgoiPushLibrary.shared.sendToken(field: "email", value: "jsilva+iospush@e-goi.com") { result, message in
+        EgoiPushLibrary.shared.sendToken(field: "email", value: "email@email.com") { result, message in
             print(result)
             
             if let msg = message {

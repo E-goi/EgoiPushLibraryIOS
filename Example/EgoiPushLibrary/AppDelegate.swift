@@ -21,7 +21,7 @@ class AppDelegate: EgoiAppDelegate {
         Messaging.messaging().delegate = self
         
         EgoiPushLibrary.shared.config(
-            appId: 123,
+            appId: "abc",
             apiKey: "abc",
             deepLinkCallBack: { link in
                 
