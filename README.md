@@ -46,10 +46,14 @@ class AppDelegate: EgoiAppDelegate {
         Messaging.messaging().delegate = self
             
         EgoiPushLibrary.shared.config(
-            appId: /* (string) (required) */,
-            apiKey: /* (string) (required) */,
-            geoEnabled: /* (boolean) (optional / defaults to true) */,
-            dialogCloseLabel: /* (string) (optional / defaults to "Close") */
+            appId: "abc",
+            apiKey: "abc",
+            dialogCallBack: { message in
+                print(message)
+            },
+            deepLinkCallBack: { message in
+                print(message)
+            }
         )
             
         return true
@@ -121,6 +125,20 @@ Responsible for initializing the library. The call of this method is required.
    <td>String to apply to the close button of the dialog that the library triggers.</td>
    <td>false</td>
    <td>"Close"</td>
+</tr>
+<tr>
+   <td>dialogCallBack</td>
+   <td>EGoiMessage -> Void</td>
+   <td>Callback to be called in the place of the dialog.</td>
+   <td>false</td>
+   <td>nil</td>
+</tr>
+<tr>
+   <td>deepLinkCallBack</td>
+   <td>EGoiMessage -> Void</td>
+   <td>Callback to be called when the link of the message is a deeplink</td>
+   <td>false</td>
+   <td>nil</td>
 </tr>
 </tbody>
 </table>

@@ -6,4 +6,5 @@ target 'EgoiPushLibrary_Example' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Analytics'
   pod 'EgoiPushLibrary'
+#  pod 'EgoiPushLibrary', :path => '../'
 end

@@ -5,7 +5,7 @@
 //  Created by João Silva on 15/01/2021.
 //
 
-struct EGoiMessage {
+public struct EGoiMessage {
     var notification: EGoiMessageNotification = EGoiMessageNotification()
     var data: EGoiMessageData = EGoiMessageData()
 }

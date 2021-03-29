@@ -83,7 +83,11 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
             return
         }
         
-        fireDialog(message)
+        if let callback = EgoiPushLibrary.shared.dialogCallBack {
+            callback(message)
+        } else {
+            fireDialog(message)
+        }
         
         completionHandler([UNNotificationPresentationOptions.sound])
     }
@@ -110,12 +114,12 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         }
         
         switch response.actionIdentifier {
-        case UNNotificationDefaultActionIdentifier:
-            fireDialog(message)
-            break
-            
-        default:
-            break
+            case UNNotificationDefaultActionIdentifier:
+                fireDialog(message)
+                break
+                
+            default:
+                break
         }
         
         pendingNotifications.removeObject(forKey: key)
@@ -225,8 +229,8 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
                     EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
                     
                     if (type == "deeplink") {
-                        if let callback = EgoiPushLibrary.shared.deepLinkCallBack, let link = message.data.actions.url {
-                            callback(link)
+                        if let callback = EgoiPushLibrary.shared.deepLinkCallBack {
+                            callback(message)
                         }
                     } else {
                         if let url = URL(string: url) {

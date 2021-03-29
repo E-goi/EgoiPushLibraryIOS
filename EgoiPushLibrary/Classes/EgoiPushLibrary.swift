@@ -22,7 +22,8 @@ public final class EgoiPushLibrary {
     var dialogCloseLabel: String?
     
     var geoEnabled: Bool = true
-    var deepLinkCallBack: ((String) -> Void)?
+    var dialogCallBack: ((EGoiMessage) -> Void)?
+    var deepLinkCallBack: ((EGoiMessage) -> Void)?
     
     /// Initiate the E-goi's library
     /// - Parameters:
@@ -36,12 +37,14 @@ public final class EgoiPushLibrary {
         apiKey: String,
         geoEnabled: Bool = true,
         dialogCloseLabel: String = "Close",
-        deepLinkCallBack: @escaping (String) -> Void
+        dialogCallBack: ((EGoiMessage) -> Void)? = nil,
+        deepLinkCallBack: ((EGoiMessage) -> Void)? = nil
     ) {
         self.appId = appId
         self.apiKey = apiKey
         self.geoEnabled = geoEnabled
         self.dialogCloseLabel = dialogCloseLabel
+        self.dialogCallBack = dialogCallBack
         self.deepLinkCallBack = deepLinkCallBack
         
         // Initialize Handlers
