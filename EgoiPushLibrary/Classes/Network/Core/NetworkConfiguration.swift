@@ -18,6 +18,7 @@ public enum HttpMethod: String {
 enum EventType: String {
     case OPEN = "open"
     case CLOSE = "canceled"
+    case RECEIVED = "received"
 }
 
 // Configuration for request

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "EgoiPushLibrary"
-  s.version          = "1.0.17"
+  s.version          = "1.0.18"
   s.summary          = "E-goi's Push Notification Library."
 
   s.description      = <<-DESC

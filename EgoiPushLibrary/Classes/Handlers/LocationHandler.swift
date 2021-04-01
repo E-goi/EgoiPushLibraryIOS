@@ -9,6 +9,7 @@ import CoreLocation
 
 class LocationHandler: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
+    private let pendingTimers = NSMutableDictionary()
     
     override init() {
         super.init()
@@ -47,8 +48,62 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
                 EgoiPushLibrary.shared.fireNotification(key: message.data.messageHash!)
             } else {
                 locationManager.startMonitoring(for: wrappedRegion)
+                
+                if let duration = message.data.geo.duration {
+                    let calendar = Calendar.current
+                    let date = calendar.date(byAdding: .second, value: duration / 1000, to: Date())
+                    
+                    guard let dt = date else {
+                        print("Invalid target date")
+                        return
+                    }
+                    
+                    guard let hash = message.data.messageHash else {
+                        print("Invalid campaign hashcode")
+                        return
+                    }
+                    
+                    let context: [String: Any] = [
+                        "region": wrappedRegion,
+                        "identifier": hash
+                    ]
+                    
+                    let timer = Timer(fireAt: dt, interval: 0, target: self, selector: #selector(stopGeofenceFromTimer), userInfo: context, repeats: false)
+                    
+                    RunLoop.current.add(timer, forMode: .common)
+                    
+                    pendingTimers.setValue(timer, forKey: hash)
+                }
             }
         }
+    }
+    
+    @objc private func stopGeofenceFromTimer(timer: Timer) {
+        let context = timer.userInfo as? [String: Any]
+        
+        guard let ctx = context else {
+            print("Invalid timer context")
+            return
+        }
+        
+        guard let region = ctx["region"] as? CLRegion else {
+            print("Invalid region")
+            return
+        }
+        
+        guard let identifier = ctx["identifier"] as? String else {
+            print("Invalid timer identifier")
+            return
+        }
+        
+        killGeofence(region: region)
+        
+        pendingTimers.removeObject(forKey: identifier)
+        EgoiPushLibrary.shared.deletePendingNotification(key: identifier)
+    }
+    
+    private func killGeofence(region: CLRegion) {
+        locationManager.stopMonitoring(for: region)
     }
     
     /// Validate if the monitoring of geofences is available
@@ -66,6 +121,13 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
             let identifier = region.identifier
             
             EgoiPushLibrary.shared.fireNotification(key: identifier)
+            
+            if let timer = pendingTimers[identifier] as? Timer {
+                timer.invalidate()
+                pendingTimers.removeObject(forKey: identifier)
+            }
+            
+            killGeofence(region: region)
         }
     }
     

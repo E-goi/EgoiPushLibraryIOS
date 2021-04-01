@@ -33,6 +33,7 @@ struct EGoiMessageDataGeo {
     var latitude: Double?
     var longitude: Double?
     var radius: Double?
+    var duration: Int?
 }
 
 struct EGoiMessageDataAction {

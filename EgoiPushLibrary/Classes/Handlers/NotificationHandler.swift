@@ -30,6 +30,7 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         if let _ = message.data.geo.latitude,
            let _ = message.data.geo.longitude,
            let _ = message.data.geo.radius,
+           let _ = message.data.geo.duration,
            EgoiPushLibrary.shared.isMonitoringAvailable()
         {
             EgoiPushLibrary.shared.createGeofence(message: message)
@@ -61,6 +62,14 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
                 return
             }
         }
+        
+        EgoiPushLibrary.shared.sendEvent(EventType.RECEIVED.rawValue, message: message)
+    }
+    
+    /// Delete a pending notification
+    /// - Parameter key: The hash of the notification to be removed
+    func deletePendingNotification(key: String) {
+        pendingNotifications.removeObject(forKey: key)
     }
     
     // MARK: - Notification handlers
@@ -181,10 +190,11 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
             message.data.deviceId = Int(deviceId) ?? 0
         }
         
-        if let latitude = userInfo["latitude"] as? String, let longitude = userInfo["longitude"] as? String, let radius = userInfo["radius"] as? String {
+        if let latitude = userInfo["latitude"] as? String, let longitude = userInfo["longitude"] as? String, let radius = userInfo["radius"] as? String, let duration = userInfo["duration"] as? String {
             message.data.geo.latitude = Double(latitude)
             message.data.geo.longitude = Double(longitude)
             message.data.geo.radius = Double(radius)
+            message.data.geo.duration = Int(duration)
         }
         
         if let actions = userInfo["actions"] as? String {

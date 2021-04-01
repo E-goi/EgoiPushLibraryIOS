@@ -135,6 +135,10 @@ public final class EgoiPushLibrary {
         notificationHandler?.fireNotification(key: key)
     }
     
+    func deletePendingNotification(key: String) {
+        notificationHandler?.deletePendingNotification(key: key)
+    }
+    
     // MARK: - Requests
     
     /// Send an user's interaction with the notification to E-goi
