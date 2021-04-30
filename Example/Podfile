@@ -2,9 +2,16 @@ use_frameworks!
 
 platform :ios, '12.0'
 
-target 'EgoiPushLibrary_Example' do
+def common_pods
   pod 'Firebase/Messaging'
-  pod 'Firebase/Analytics'
-  pod 'EgoiPushLibrary', '~> 1.0.18'
-#  pod 'EgoiPushLibrary', :path => '../'
+  #  pod 'EgoiPushLibrary'
+end
+
+target 'EgoiPushLibrary_Example' do
+  common_pods
+  pod 'EgoiPushLibrary', :path => '../'
+end
+
+target 'NotificationService' do
+  common_pods
 end

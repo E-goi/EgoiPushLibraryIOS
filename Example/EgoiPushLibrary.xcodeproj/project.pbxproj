@@ -13,11 +13,41 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		BFC89A1225C42D8F0081C111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFC89A1125C42D8F0081C111 /* GoogleService-Info.plist */; };
+		B1A5B38C64BFA329445D842F /* Pods_NotificationService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C57AA939FF02EAB1B61013D /* Pods_NotificationService.framework */; };
+		BF038E3525CC27B0000AD2AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF038E3425CC27B0000AD2AB /* GoogleService-Info.plist */; };
+		BF76DA5126272E600050079B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DA5026272E600050079B /* NotificationService.swift */; };
+		BF76DA5526272E600050079B /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF76DA4E26272E600050079B /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BF76DA5326272E600050079B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF76DA4D26272E600050079B;
+			remoteInfo = NotificationService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BFD0CD442626E7EA0095AD35 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BF76DA5526272E600050079B /* NotificationService.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2C57AA939FF02EAB1B61013D /* Pods_NotificationService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB2AFD79A54255A4808DDED /* EgoiPushLibrary.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EgoiPushLibrary.podspec; path = ../EgoiPushLibrary.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		405CDF77B5802813974DC462 /* Pods-NotificationService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationService.release.xcconfig"; path = "Target Support Files/Pods-NotificationService/Pods-NotificationService.release.xcconfig"; sourceTree = "<group>"; };
+		43F46C36DBECB808F84B018D /* Pods-NotificationService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationService.debug.xcconfig"; path = "Target Support Files/Pods-NotificationService/Pods-NotificationService.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* EgoiPushLibrary_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EgoiPushLibrary_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -25,12 +55,17 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		64A41DEE6C43BDA819052A0A /* Pods_NotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A30692E530B35403C9CEDCC /* Pods_EgoiPushLibrary_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgoiPushLibrary_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89312B47C12B4A77B69C006B /* Pods-EgoiPushLibrary_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgoiPushLibrary_Example.debug.xcconfig"; path = "Target Support Files/Pods-EgoiPushLibrary_Example/Pods-EgoiPushLibrary_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		90DEC0A9AF5A420723405910 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		AD52A2401CDC4CB05327D83D /* Pods-EgoiPushLibrary_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgoiPushLibrary_Example.release.xcconfig"; path = "Target Support Files/Pods-EgoiPushLibrary_Example/Pods-EgoiPushLibrary_Example.release.xcconfig"; sourceTree = "<group>"; };
+		BF038E3425CC27B0000AD2AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF29795525B7003300BB77FA /* EgoiPushLibrary_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EgoiPushLibrary_Example.entitlements; sourceTree = "<group>"; };
-		BFC89A1125C42D8F0081C111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF76DA4E26272E600050079B /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF76DA5026272E600050079B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		BF76DA5226272E600050079B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF76DA5D26272E860050079B /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
 		DDA643969909B7FC6F0DCEE3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,6 +78,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BF76DA4B26272E600050079B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1A5B38C64BFA329445D842F /* Pods_NotificationService.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -52,6 +95,7 @@
 				BF29795525B7003300BB77FA /* EgoiPushLibrary_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for EgoiPushLibrary */,
+				BF76DA4F26272E600050079B /* NotificationService */,
 				607FACD11AFB9204008FA782 /* Products */,
 				D48FBB3EFF6E4D5CDA0C2C18 /* Pods */,
 				C20F3D38A7705EA8248ABABB /* Frameworks */,
@@ -62,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* EgoiPushLibrary_Example.app */,
+				BF76DA4E26272E600050079B /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,7 +128,7 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BFC89A1125C42D8F0081C111 /* GoogleService-Info.plist */,
+				BF038E3425CC27B0000AD2AB /* GoogleService-Info.plist */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -99,10 +144,22 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		BF76DA4F26272E600050079B /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				BF76DA5D26272E860050079B /* NotificationService.entitlements */,
+				BF76DA5026272E600050079B /* NotificationService.swift */,
+				BF76DA5226272E600050079B /* Info.plist */,
+			);
+			path = NotificationService;
+			sourceTree = "<group>";
+		};
 		C20F3D38A7705EA8248ABABB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				6A30692E530B35403C9CEDCC /* Pods_EgoiPushLibrary_Example.framework */,
+				64A41DEE6C43BDA819052A0A /* Pods_NotificationServiceExtension.framework */,
+				2C57AA939FF02EAB1B61013D /* Pods_NotificationService.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,6 +169,8 @@
 			children = (
 				89312B47C12B4A77B69C006B /* Pods-EgoiPushLibrary_Example.debug.xcconfig */,
 				AD52A2401CDC4CB05327D83D /* Pods-EgoiPushLibrary_Example.release.xcconfig */,
+				43F46C36DBECB808F84B018D /* Pods-NotificationService.debug.xcconfig */,
+				405CDF77B5802813974DC462 /* Pods-NotificationService.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -128,15 +187,35 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				2F25B447681A1AD13303BC20 /* [CP] Embed Pods Frameworks */,
+				BFD0CD442626E7EA0095AD35 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BF76DA5426272E600050079B /* PBXTargetDependency */,
 			);
 			name = EgoiPushLibrary_Example;
 			productName = EgoiPushLibrary;
 			productReference = 607FACD01AFB9204008FA782 /* EgoiPushLibrary_Example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BF76DA4D26272E600050079B /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF76DA5626272E600050079B /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				9CB14999F9F73B88BD5CE5BE /* [CP] Check Pods Manifest.lock */,
+				BF76DA4A26272E600050079B /* Sources */,
+				BF76DA4B26272E600050079B /* Frameworks */,
+				BF76DA4C26272E600050079B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = BF76DA4E26272E600050079B /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -144,7 +223,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -152,6 +231,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = SBJP4UQ347;
 						LastSwiftMigration = 1230;
+						ProvisioningStyle = Automatic;
+					};
+					BF76DA4D26272E600050079B = {
+						CreatedOnToolsVersion = 12.4;
+						DevelopmentTeam = SBJP4UQ347;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -170,6 +254,7 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* EgoiPushLibrary_Example */,
+				BF76DA4D26272E600050079B /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
@@ -180,9 +265,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				BFC89A1225C42D8F0081C111 /* GoogleService-Info.plist in Resources */,
+				BF038E3525CC27B0000AD2AB /* GoogleService-Info.plist in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF76DA4C26272E600050079B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +339,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EgoiPushLibrary_Example/Pods-EgoiPushLibrary_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9CB14999F9F73B88BD5CE5BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NotificationService-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -259,7 +373,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BF76DA4A26272E600050079B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF76DA5126272E600050079B /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF76DA5426272E600050079B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF76DA4D26272E600050079B /* NotificationService */;
+			targetProxy = BF76DA5326272E600050079B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
@@ -388,7 +518,9 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89312B47C12B4A77B69C006B /* Pods-EgoiPushLibrary_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = EgoiPushLibrary_Example.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -407,7 +539,9 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD52A2401CDC4CB05327D83D /* Pods-EgoiPushLibrary_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = EgoiPushLibrary_Example.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -421,6 +555,63 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BF76DA5726272E600050079B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43F46C36DBECB808F84B018D /* Pods-NotificationService.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SBJP4UQ347;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.egoi.EgoiPushLibrary-Example.NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF76DA5826272E600050079B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 405CDF77B5802813974DC462 /* Pods-NotificationService.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SBJP4UQ347;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.egoi.EgoiPushLibrary-Example.NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -441,6 +632,15 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF76DA5626272E600050079B /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF76DA5726272E600050079B /* Debug */,
+				BF76DA5826272E600050079B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -19,7 +19,6 @@ public final class EgoiPushLibrary {
     
     var appId: String?
     var apiKey: String?
-    var dialogCloseLabel: String?
     
     var geoEnabled: Bool = true
     var dialogCallBack: ((EGoiMessage) -> Void)?
@@ -30,20 +29,17 @@ public final class EgoiPushLibrary {
     ///   - appId: The ID of the E-goi's app
     ///   - apiKey: The API Key of the E-goi's account
     ///   - geoEnabled: Enable the geolocation functionality
-    ///   - dialogCloseLabel: Label to show on the button of the notification alert
     ///   - deepLinkCallBack: Callback to be invoked when the action type of the notification is a deeplink
     public func config(
         appId: String,
         apiKey: String,
         geoEnabled: Bool = true,
-        dialogCloseLabel: String = "Close",
         dialogCallBack: ((EGoiMessage) -> Void)? = nil,
         deepLinkCallBack: ((EGoiMessage) -> Void)? = nil
     ) {
         self.appId = appId
         self.apiKey = apiKey
         self.geoEnabled = geoEnabled
-        self.dialogCloseLabel = dialogCloseLabel
         self.dialogCallBack = dialogCallBack
         self.deepLinkCallBack = deepLinkCallBack
         
@@ -157,7 +153,6 @@ public final class EgoiPushLibrary {
         // Send the event to E-goi in a background thread
         DispatchQueue.global().async {
             self.backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "Send Event") {
-                
                 UIApplication.shared.endBackgroundTask(self.backgroundTaskID!)
                 self.backgroundTaskID = UIBackgroundTaskIdentifier.invalid
             }

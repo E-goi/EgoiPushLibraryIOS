@@ -23,9 +23,6 @@ class AppDelegate: EgoiAppDelegate {
         EgoiPushLibrary.shared.config(
             appId: "abc",
             apiKey: "abc",
-            dialogCallBack: { message in
-                print(message)
-            },
             deepLinkCallBack: { message in
                 print(message)
             }

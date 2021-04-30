@@ -1,3 +1,32 @@
+# What's new in version 2.0.0?
+
+### MAJOR:
+
+#### Notifications are now sent as Remote Notification instead of silent:
+
+Due to some problems with the delivery of the notifications, we changed our logic to start sending the notifications as Remote Notifications (or normal). This 
+brings some changes to the configuration of the library. Since the notifications are now displayed by the OS, you must generate a **NotificationServiceExtension** in 
+your app to process the image and actions of the notification before showing in the device. To ease the configuration process, you can copy the content of our 
+[NotificationService](Example/NotificationService/NotificationService.swift) file and past in yours (just make sure the name of your class is the one you 
+generated).
+
+### MINOR:
+
+#### Actions in the notification:
+
+The actions you define in your E-goi campaign, are also displayed in the notification that is sent to the user device.
+
+#### "Cancel" notification / pop-up label:
+
+You no longer need to define a label for the "Cancel" action of the notifications during the configuration of the library.
+Now, you define the label on the E-goi platform during the creation of a campaign, and it is inserted automatically on your
+notification / pop-up.
+
+#### Geofence duration:
+
+You can now add a duration to the geofence during the creation of Push campaign in the E-goi
+platform.
+
 # EgoiPushLibrary
 
 [![Version](https://img.shields.io/cocoapods/v/EgoiPushLibrary.svg?style=flat)](https://cocoapods.org/pods/EgoiPushLibrary)
@@ -79,6 +108,15 @@ extension AppDelegate : MessagingDelegate {
 }
 ```
 
+### NotificationServiceExtension
+
+To display the images and actions defined in your E-goi campaign in the notification, you will need to generate a **NotificationServiceExtension** to process the logic 
+before the OS displays it in the device. To do that you can follow the instructions in this [link](https://developer.apple.com/documentation/usernotifications/modifying_content_in_newly_delivered_notifications). 
+After generating the file, you can copy and past the content of our [NotificationService](Example/NotificationService/NotificationService.swift) (make sure the class name 
+is the one you generated and not the one of our file).
+
+In your [Podfile](Example/Podfile), you will need to add 'Firebase/Messaging' as a dependency of your NotificationServiceExtension.
+
 ## References
 
 ### Configurations
@@ -118,13 +156,6 @@ Responsible for initializing the library. The call of this method is required.
    <td>Flag that enables or disabled location related functionalities.</td>
    <td>false</td>
    <td>true</td>
-</tr>
-<tr>
-   <td>dialogCloseLabel</td>
-   <td>String</td>
-   <td>String to apply to the close button of the dialog that the library triggers.</td>
-   <td>false</td>
-   <td>"Close"</td>
 </tr>
 <tr>
    <td>dialogCallBack</td>
