@@ -128,7 +128,7 @@ final class PushNetworking {
             }
             
         } failure: { (message) in
-            print("Error sending token to server: \(message ?? "---")")
+            print("Error sending request to server: \(message ?? "---")")
             
             DispatchQueue.main.async {
                 callback(false)

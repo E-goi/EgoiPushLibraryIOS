@@ -25,21 +25,19 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     /// Process the remote notification. Validate if it is a geopush and if it is create a geofence, otherwise, fire a notification.
     /// - Parameter userInfo: The data of the remote notification
     func processNotification(userInfo: [AnyHashable: Any]) {
-        let message: EGoiMessage = buildMessage(userInfo: userInfo)
+        let msg: EGoiMessage? = buildMessage(userInfo: userInfo)
         
-        if let _ = message.data.geo.latitude,
-           let _ = message.data.geo.longitude,
-           let _ = message.data.geo.radius,
-           let _ = message.data.geo.duration,
-           EgoiPushLibrary.shared.isMonitoringAvailable()
-        {
-            EgoiPushLibrary.shared.createGeofence(message: message)
-        } else {
-            guard let key = message.data.messageHash else {
-                return
+        if let message = msg {
+            if let _ = message.data.geo.latitude,
+               let _ = message.data.geo.longitude,
+               let _ = message.data.geo.radius,
+               let _ = message.data.geo.duration,
+               EgoiPushLibrary.shared.isMonitoringAvailable()
+            {
+                EgoiPushLibrary.shared.createGeofence(message: message)
             }
-            
-            fireNotification(key: key)
+        } else {
+            return
         }
     }
     
@@ -62,8 +60,6 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
                 return
             }
         }
-        
-        EgoiPushLibrary.shared.sendEvent(EventType.RECEIVED.rawValue, message: message)
     }
     
     /// Delete a pending notification
@@ -84,21 +80,7 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        guard let key = notification.request.content.userInfo["key"] as? String else {
-            return
-        }
-        
-        guard let message = pendingNotifications[key] as? EGoiMessage else {
-            return
-        }
-        
-        if let callback = EgoiPushLibrary.shared.dialogCallBack {
-            callback(message)
-        } else {
-            fireDialog(message)
-        }
-        
-        completionHandler([UNNotificationPresentationOptions.sound])
+        completionHandler([UNNotificationPresentationOptions.alert, UNNotificationPresentationOptions.sound])
     }
     
     
@@ -114,24 +96,62 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     ) {
         let userInfo = response.notification.request.content.userInfo
         
-        guard let key = userInfo["key"] as? String else {
-            return
+        var message: EGoiMessage;
+        
+        if let _ = userInfo["aps"] {
+            message = buildMessage(userInfo: userInfo)!
+        } else {
+            if let key = userInfo["key"] as? String, let msg = pendingNotifications[key] as? EGoiMessage {
+                message = msg
+                pendingNotifications.removeObject(forKey: key)
+            } else {
+                return
+            }
         }
         
-        guard let message = pendingNotifications[key] as? EGoiMessage else {
-            return
-        }
+        EgoiPushLibrary.shared.sendEvent(EventType.RECEIVED.rawValue, message: message)
         
         switch response.actionIdentifier {
-            case UNNotificationDefaultActionIdentifier:
+        case UNNotificationDefaultActionIdentifier:
+            if let callback = EgoiPushLibrary.shared.dialogCallBack {
+                callback(message)
+            } else {
                 fireDialog(message)
-                break
+            }
+            break
                 
-            default:
-                break
+        case "confirm":
+            EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
+            
+            if (message.data.actions.type == "deeplink") {
+                if let callback = EgoiPushLibrary.shared.deepLinkCallBack {
+                    callback(message)
+                }
+            } else {
+                if let wrappedUrl = message.data.actions.url, let url = URL(string: wrappedUrl) {
+                    DispatchQueue.main.async {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                }
+            }
+            break
+                
+        case "close":
+            EgoiPushLibrary.shared.sendEvent(EventType.CLOSE.rawValue, message: message)
+            break
+                
+        default:
+            break
         }
         
-        pendingNotifications.removeObject(forKey: key)
+        userNotificationCenter.getNotificationCategories{cats in
+            var categories = cats as Set<UNNotificationCategory>
+            categories = categories.filter { $0.identifier != "temp_cat" }
+            categories = categories.filter { $0.identifier != message.data.messageHash }
+            self.userNotificationCenter.setNotificationCategories(categories)
+        }
         
         completionHandler()
     }
@@ -160,56 +180,61 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     /// Build a message with the notification data and add it to the pending notifications map
     /// - Parameter userInfo: The notification data
     /// - Returns: Returns a message
-    private func buildMessage(userInfo: [AnyHashable: Any]) -> EGoiMessage {
-        var message = EGoiMessage()
-        
-        message.notification.title = userInfo["title"] as? String ?? ""
-        message.notification.body = userInfo["body"] as? String ?? ""
-        message.notification.image = userInfo["image"] as? String
-        message.data.messageHash = userInfo["message-hash"] as? String
-        
-        if let listId = userInfo["list-id"] as? String {
-            message.data.listId = Int(listId)
-        }
-        
-        message.data.contactId = userInfo["contact-id"] as? String
-        
-        if let accountId = userInfo["account-id"] as? String {
-            message.data.accountId = Int(accountId)
-        }
-        
-        if let applicationId = userInfo["application-id"] as? String {
-            message.data.applicationId = applicationId
-        }
-        
-        if let messageId = userInfo["message-id"] as? String {
-            message.data.messageId = Int(messageId)
-        }
-        
-        if let deviceId = userInfo["device-id"] as? String {
-            message.data.deviceId = Int(deviceId) ?? 0
-        }
-        
-        if let latitude = userInfo["latitude"] as? String, let longitude = userInfo["longitude"] as? String, let radius = userInfo["radius"] as? String, let duration = userInfo["duration"] as? String {
-            message.data.geo.latitude = Double(latitude)
-            message.data.geo.longitude = Double(longitude)
-            message.data.geo.radius = Double(radius)
-            message.data.geo.duration = Int(duration)
-        }
-        
-        if let actions = userInfo["actions"] as? String {
-            let dict = convertToDictionary(actions)
+    private func buildMessage(userInfo: [AnyHashable: Any]) -> EGoiMessage? {
+        if let aps = userInfo["aps"] as? NSDictionary {
+            var message = EGoiMessage()
             
-            if let data = dict {
-                message.data.actions.type = data["type"]
-                message.data.actions.text = data["text"]
-                message.data.actions.url = data["url"]
+            message.notification.title = aps["title"] as? String ?? ""
+            message.notification.body = aps["body"] as? String ?? ""
+            message.notification.image = aps["image"] as? String
+            message.data.messageHash = aps["message-hash"] as? String
+            
+            if let listId = aps["list-id"] as? String {
+                message.data.listId = Int(listId)
             }
+            
+            message.data.contactId = aps["contact-id"] as? String
+            
+            if let accountId = aps["account-id"] as? String {
+                message.data.accountId = Int(accountId)
+            }
+            
+            if let applicationId = aps["application-id"] as? String {
+                message.data.applicationId = applicationId
+            }
+            
+            if let messageId = aps["message-id"] as? String {
+                message.data.messageId = Int(messageId)
+            }
+            
+            if let deviceId = aps["device-id"] as? String {
+                message.data.deviceId = Int(deviceId) ?? 0
+            }
+            
+            if let latitude = aps["latitude"] as? String, let longitude = aps["longitude"] as? String, let radius = aps["radius"] as? String, let duration = aps["duration"] as? String {
+                message.data.geo.latitude = Double(latitude)
+                message.data.geo.longitude = Double(longitude)
+                message.data.geo.radius = Double(radius)
+                message.data.geo.duration = Int(duration)
+            }
+            
+            if let actions = aps["actions"] as? String {
+                let dict = convertToDictionary(actions)
+                
+                if let data = dict {
+                    message.data.actions.type = data["type"]
+                    message.data.actions.text = data["text"]
+                    message.data.actions.url = data["url"]
+                    message.data.actions.textCancel = data["text-cancel"]
+                }
+            }
+            
+            pendingNotifications.setValue(message, forKey: message.data.messageHash!)
+            
+            return message
         }
         
-        pendingNotifications.setValue(message, forKey: message.data.messageHash!)
-        
-        return message
+        return nil
     }
     
     /// Show an alert to the user
@@ -221,17 +246,17 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
             preferredStyle: .alert
         )
         
-        let close = UIAlertAction(
-            title: EgoiPushLibrary.shared.dialogCloseLabel,
-            style: .destructive,
-            handler: { _ in
-                EgoiPushLibrary.shared.sendEvent(EventType.CLOSE.rawValue, message: message)
-            }
-        )
-        
-        alert.addAction(close)
-        
-        if let type = message.data.actions.type, let text = message.data.actions.text, let url = message.data.actions.url {
+        if let type = message.data.actions.type, let text = message.data.actions.text, let url = message.data.actions.url, let textCancel = message.data.actions.textCancel {
+            let close = UIAlertAction(
+                title: textCancel,
+                style: .destructive,
+                handler: { _ in
+                    EgoiPushLibrary.shared.sendEvent(EventType.CLOSE.rawValue, message: message)
+                }
+            )
+            
+            alert.addAction(close)
+            
             let action = UIAlertAction(
                 title: text,
                 style: .default,
@@ -260,9 +285,9 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         DispatchQueue.main.async {
             let rootViewController: UIViewController?
             
-            if let delegate = UIApplication.shared.delegate as? EgoiAppDelegate, let window = delegate.window {
+            if let delegate = UIApplication.shared.delegate, let window = delegate.window as? UIWindow {
                 rootViewController = window.rootViewController
-            } else if #available(iOS 13.0, *), let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? EgoiSceneDelegate, let window = sceneDelegate.window {
+            } else if #available(iOS 13.0, *), let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? UIWindowSceneDelegate, let window = sceneDelegate.window as? UIWindow {
                 rootViewController = window.rootViewController
             } else {
                 return
@@ -327,6 +352,20 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
             }
             
             content.attachments = [attachment]
+        }
+        
+        if let text = message.data.actions.text, let textCancel = message.data.actions.textCancel {
+            let confirmAction = UNNotificationAction(identifier: "confirm", title: text, options: UNNotificationActionOptions.foreground)
+            let cancelAction = UNNotificationAction(identifier: "close", title: textCancel, options: UNNotificationActionOptions.destructive)
+            
+            let categoryIdentifier = message.data.messageHash!
+            let category = UNNotificationCategory(identifier: categoryIdentifier, actions: [confirmAction, cancelAction], intentIdentifiers: [], options: UNNotificationCategoryOptions.customDismissAction)
+            
+            UNUserNotificationCenter.current().getNotificationCategories() { cats in
+                UNUserNotificationCenter.current().setNotificationCategories(cats.union([category]))
+            }
+            
+            content.categoryIdentifier = categoryIdentifier
         }
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
