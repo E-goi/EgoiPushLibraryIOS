@@ -18,11 +18,9 @@ class NotificationService: UNNotificationServiceExtension {
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         
-        if let bestAttemptContent = bestAttemptContent {
-            if let bca = processNotificationContent(bestAttemptContent) {
-                FIRMessagingExtensionHelper().populateNotificationContent(bca, withContentHandler: contentHandler)
-            } else {
-                FIRMessagingExtensionHelper().populateNotificationContent(bestAttemptContent, withContentHandler: contentHandler)
+        if var bac = bestAttemptContent {
+            processNotificationContent(&bac) {
+                FIRMessagingExtensionHelper().populateNotificationContent(bac, withContentHandler: contentHandler)
             }
         }
     }
@@ -43,13 +41,13 @@ class NotificationService: UNNotificationServiceExtension {
     
     /// Creates a temporary notification category with the actions defined on your E-goi campaign and adds it to the notification that's going to be presented.
     /// When the notification is opened or dismissed, the category is deleted from the application.
-    private func processNotificationContent(_ bestAttemptContent: UNMutableNotificationContent) -> UNMutableNotificationContent? {
+    private func processNotificationContent(_ bestAttemptContent: inout UNMutableNotificationContent, callback: @escaping () -> Void) {
         guard let aps = bestAttemptContent.userInfo["aps"] as? NSDictionary else {
-            return nil
+            return
         }
         
         guard let actionsString = aps["actions"] as? String else {
-            return nil
+            return
         }
         
         if let actions = convertToDictionary(actionsString) {
@@ -59,14 +57,15 @@ class NotificationService: UNNotificationServiceExtension {
             let categoryIdentifier = aps["message-hash"] as! String
             let category = UNNotificationCategory(identifier: categoryIdentifier, actions: [confirmAction, cancelAction], intentIdentifiers: [], options: UNNotificationCategoryOptions.customDismissAction)
             
+            bestAttemptContent.categoryIdentifier = categoryIdentifier
+            
             UNUserNotificationCenter.current().getNotificationCategories() { cats in
                 UNUserNotificationCenter.current().setNotificationCategories(cats.union([category]))
+                // This sleep is required to give time for the category to be register in the application before displaying the notification
+                usleep(500000)
+                callback()
             }
-            
-            bestAttemptContent.categoryIdentifier = categoryIdentifier
         }
-        
-        return bestAttemptContent
     }
     
     /// Converts a JSON string to an Dictionary
