@@ -150,10 +150,13 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
             var categories = cats as Set<UNNotificationCategory>
             categories = categories.filter { $0.identifier != "temp_cat" }
             categories = categories.filter { $0.identifier != message.data.messageHash }
+            
             self.userNotificationCenter.setNotificationCategories(categories)
+            
+            DispatchQueue.main.async {
+                completionHandler();
+            }
         }
-        
-        completionHandler()
     }
     
     // MARK: - Private Functions
