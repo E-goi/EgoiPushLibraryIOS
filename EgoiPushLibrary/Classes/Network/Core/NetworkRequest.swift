@@ -17,14 +17,16 @@ final class NetworkRequest {
     /// Init a NetworkRequest object with the given configuration
     ///
     /// - Parameters:
+    ///   - apiKey: the API key of the E-goi account
     ///   - endPoint: the endpoint
     ///   - method: the http method (GET, POST, etc)
     ///   - json: the json object (optional)
-    convenience init(endPoint: String, method: HttpMethod, json: NSDictionary?) {
+    convenience init(apiKey:String, endPoint: String, method: HttpMethod, json: NSDictionary?) {
         
         self.init()
         
         self.configureRequest(
+            apiKey: apiKey,
             endPoint: endPoint,
             method: method,
             json: json)
@@ -57,10 +59,10 @@ final class NetworkRequest {
                 return
             }
             
-            // Ensure the server responds with status code 200
-            guard httpResponse.statusCode == 200 else {
+            // Ensure the server responds with status code 202
+            guard httpResponse.statusCode == 202 else {
                 
-                print("Status code is not 200")
+                print("Status code is not 202")
                 
                 if error != nil {
                     DispatchQueue.main.async {
@@ -108,10 +110,12 @@ final class NetworkRequest {
     /// Private func to configure the request
     ///
     /// - Parameters:
+    ///   - apiKey: the API key of the E-goi account
     ///   - endPoint: the endpoint
     ///   - method: the http method
     ///   - json: the json object
     private func configureRequest(
+        apiKey: String,
         endPoint: String,
         method: HttpMethod,
         json: NSDictionary?) {
@@ -127,6 +131,8 @@ final class NetworkRequest {
             timeoutInterval: RequestValues.timeOut)
         
         self.request?.httpMethod = method.rawValue
+        
+        request?.addValue(apiKey, forHTTPHeaderField: "ApiKey")
         
         if (method == .POST || method == .PUT) {
             request?.addValue(

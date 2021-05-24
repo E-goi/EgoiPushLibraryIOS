@@ -34,7 +34,7 @@ struct RequestValues {
 
 // Endpoints
 struct Endpoints {
-    private static let endPoint = "https://push-wrapper.egoiapp.com/"
-    static let register = endPoint + "token"
-    static let event = endPoint + "event"
+    static let endPoint = "https://api.egoiapp.com/push/apps/"
+    static let register = "/token"
+    static let event = "/event"
 }
