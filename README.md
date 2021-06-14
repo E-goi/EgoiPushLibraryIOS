@@ -1,10 +1,31 @@
-# What's new in version 2.0.1?
+# What's new in version 2.0.0?
+
+### MAJOR:
+
+#### Notifications are now sent as Remote Notification instead of silent:
+
+Due to some problems with the delivery of the notifications, we changed our logic to start sending the notifications as Remote Notifications (or normal). This 
+brings some changes to the configuration of the library. Since the notifications are now displayed by the OS, you must generate a **NotificationServiceExtension** in 
+your app to process the image and actions of the notification before showing in the device. To ease the configuration process, you can copy the content of our 
+[NotificationService](Example/NotificationService/NotificationService.swift) file and past in yours (just make sure the name of your class is the one you 
+generated).
 
 ### MINOR:
 
-#### Notification Actions:
+#### Actions in the notification:
 
-Actions were only displayed on the notification if an image was also defined.
+The actions you define in your E-goi campaign, are also displayed in the notification that is sent to the user device.
+
+#### "Cancel" notification / pop-up label:
+
+You no longer need to define a label for the "Cancel" action of the notifications during the configuration of the library.
+Now, you define the label on the E-goi platform during the creation of a campaign, and it is inserted automatically on your
+notification / pop-up.
+
+#### Geofence duration:
+
+You can now add a duration to the geofence during the creation of Push campaign in the E-goi
+platform.
 
 # EgoiPushLibrary
 
