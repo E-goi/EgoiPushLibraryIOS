@@ -24,6 +24,8 @@ final class PushNetworking {
         callback: @escaping (_ success: Bool) -> Void) {
         
         let json: NSMutableDictionary = [
+            "api_key": apiKey,
+            "app_id": appId,
             "token": token,
             "os": "ios"
         ]
@@ -36,8 +38,7 @@ final class PushNetworking {
         }
         
         let request = NetworkRequest(
-            apiKey: apiKey,
-            endPoint: Endpoints.endPoint + appId + Endpoints.register,
+            endPoint: Endpoints.register,
             method: .POST,
             json: json)
         
@@ -50,7 +51,7 @@ final class PushNetworking {
                 return
             }
             
-            guard let result = dictionary.object(forKey: "success") as? Bool else {
+            guard let result = dictionary.object(forKey: "data") as? String else {
                 DispatchQueue.main.async {
                     callback(false)
                 }
@@ -58,7 +59,7 @@ final class PushNetworking {
             }
             
             DispatchQueue.main.async {
-                callback(result == true)
+                callback(result.uppercased() == "OK")
             }
             
         } failure: { (message) in
@@ -90,6 +91,8 @@ final class PushNetworking {
         callback: @escaping (_ success: Bool) -> Void
     ) {
         let json: NSMutableDictionary = [
+            "api_key": apiKey,
+            "app_id": appId,
             "contact": contactID,
             "os": "ios",
             "message_hash": messageHash,
@@ -98,8 +101,7 @@ final class PushNetworking {
         ]
         
         let request = NetworkRequest(
-            apiKey: apiKey,
-            endPoint: Endpoints.endPoint + appId + Endpoints.event,
+            endPoint: Endpoints.event,
             method: .POST,
             json: json
         )
@@ -113,7 +115,7 @@ final class PushNetworking {
                 return
             }
             
-            guard let result = dictionary.object(forKey: "success") as? Bool else {
+            guard let result = dictionary.object(forKey: "data") as? String else {
                 DispatchQueue.main.async {
                     callback(false)
                 }
@@ -122,7 +124,7 @@ final class PushNetworking {
             }
             
             DispatchQueue.main.async {
-                callback(result == true)
+                callback(result.uppercased() == "OK")
             }
             
         } failure: { (message) in
