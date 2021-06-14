@@ -2,9 +2,9 @@
 
 ### MINOR:
 
-#### Event "received":
+#### Notification Actions:
 
-Now, when a notification is displayed in the device, the event "received" is sent to E-goi.
+Actions were only displayed on the notification if an image was also defined.
 
 # EgoiPushLibrary
 
