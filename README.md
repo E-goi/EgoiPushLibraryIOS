@@ -1,10 +1,10 @@
-# What's new in version 2.0.1?
+# What's new in version 2.0.2?
 
 ### MINOR:
 
-#### Notification Actions:
+#### Event "received":
 
-Actions were only displayed on the notification if an image was also defined.
+Now, when a notification is displayed in the device, the event "received" is sent to E-goi.
 
 # EgoiPushLibrary
 
