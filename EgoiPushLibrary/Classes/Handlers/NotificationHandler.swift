@@ -260,29 +260,31 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
             
             alert.addAction(close)
             
-            let action = UIAlertAction(
-                title: text,
-                style: .default,
-                handler: { _ in
-                    EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
-                    
-                    if (type == "deeplink") {
-                        if let callback = EgoiPushLibrary.shared.deepLinkCallBack {
-                            callback(message)
-                        }
-                    } else {
-                        if let url = URL(string: url) {
-                            DispatchQueue.main.async {
-                                if UIApplication.shared.canOpenURL(url) {
-                                    UIApplication.shared.open(url)
+            if type != "", text != "", url != "", textCancel != "" {
+                let action = UIAlertAction(
+                    title: text,
+                    style: .default,
+                    handler: { _ in
+                        EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
+                        
+                        if (type == "deeplink") {
+                            if let callback = EgoiPushLibrary.shared.deepLinkCallBack {
+                                callback(message)
+                            }
+                        } else {
+                            if let url = URL(string: url) {
+                                DispatchQueue.main.async {
+                                    if UIApplication.shared.canOpenURL(url) {
+                                        UIApplication.shared.open(url)
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            )
-            
-            alert.addAction(action)
+                )
+                
+                alert.addAction(action)
+            }
         }
         
         DispatchQueue.main.async {

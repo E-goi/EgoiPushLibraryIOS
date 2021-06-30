@@ -2,3 +2,4 @@
 Example/Pods/
 *.xcuserstate
 GoogleService-Info.plist
+.idea/
