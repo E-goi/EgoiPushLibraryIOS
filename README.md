@@ -1,10 +1,10 @@
-# What's new in version 2.0.2?
+# What's new in version 2.0.3?
 
 ### MINOR:
 
-#### Event "received":
+#### Conditional dialog actions:
 
-Now, when a notification is displayed in the device, the event "received" is sent to E-goi.
+A bug was fixed where, if you sent a campaing without actions, the "See" actions was still displayed in the dialog box.
 
 # EgoiPushLibrary
 
