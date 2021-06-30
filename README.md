@@ -1,6 +1,6 @@
 # What's new in version 2.0.3?
 
-### MINOR:
+### Patch:
 
 #### Conditional dialog actions:
 
