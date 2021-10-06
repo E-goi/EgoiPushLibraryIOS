@@ -89,6 +89,13 @@ final class PushNetworking {
         event: String,
         callback: @escaping (_ success: Bool) -> Void
     ) {
+        if contactID == "" {
+            DispatchQueue.main.async {
+                callback (true)
+            }
+            return
+        }
+        
         let json: NSMutableDictionary = [
             "contact": contactID,
             "os": "ios",
