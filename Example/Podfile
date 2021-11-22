@@ -9,7 +9,7 @@ end
 target 'EgoiPushLibrary_Example' do
   common_pods
 #  pod 'EgoiPushLibrary', :path => '../'
-  pod 'EgoiPushLibrary', '2.0.3'
+  pod 'EgoiPushLibrary', '2.0.4'
 end
 
 target 'NotificationService' do
