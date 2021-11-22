@@ -1,10 +1,14 @@
-# What's new in version 2.0.3?
+# What's new in version 2.0.4?
 
-### Patch:
+### PATCH:
 
-#### Conditional dialog actions:
+#### Update dependencies:
 
-A bug was fixed where, if you sent a campaing without actions, the "See" actions was still displayed in the dialog box.
+The dependencies used in this SDK were updated to the latest versions.
+
+#### Compatibility with test campaigns:
+
+Add compatibility with test campaigns from E-goi by not sending the campaign events to E-goi.
 
 # EgoiPushLibrary
 
