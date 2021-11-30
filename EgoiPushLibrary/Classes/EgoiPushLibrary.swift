@@ -21,6 +21,7 @@ public final class EgoiPushLibrary {
     var apiKey: String?
     
     var geoEnabled: Bool = true
+    var handleNotifications: Bool = true
     var dialogCallBack: ((EGoiMessage) -> Void)?
     var deepLinkCallBack: ((EGoiMessage) -> Void)?
     
@@ -113,16 +114,28 @@ public final class EgoiPushLibrary {
     
     // MARK: - Notification
     
+    public func requestNotificationsPermission() {
+        notificationHandler?.requestPermission()
+    }
+    
     /// Process the remote notification received
     /// - Parameters:
     ///   - userInfo: The data of the remote notification
     ///   - callback: The callback to call after processing the notification
-    func processNotification(
+    public func processNotification(
         _ userInfo: [AnyHashable : Any],
         callback: @escaping (UIBackgroundFetchResult) -> Void
     ) {
         notificationHandler?.processNotification(userInfo: userInfo)
         callback(.noData)
+    }
+    
+    public func handleNotificationInteraction(
+        response: UNNotificationResponse,
+        userNotificationCenter: UNUserNotificationCenter? = nil,
+        completionHandler: (() -> Void)? = nil
+    ) {
+        notificationHandler?.handleNotificationInteraction(response: response, userNotificationCenter: userNotificationCenter, completionHandler: completionHandler)
     }
     
     /// Send a local notification to the user
