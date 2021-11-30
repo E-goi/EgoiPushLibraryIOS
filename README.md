@@ -1,14 +1,10 @@
-# What's new in version 2.0.4?
+# What's new in version 2.1.0?
 
-### PATCH:
+### MINOR:
 
-#### Update dependencies:
+#### Allow user to take control of the notifications:
 
-The dependencies used in this SDK were updated to the latest versions.
-
-#### Compatibility with test campaigns:
-
-Add compatibility with test campaigns from E-goi by not sending the campaign events to E-goi.
+It is now possible to take control of the UNUserNotificationCenter and call our methods when you need to. To do that, you just need to extend the new class [EgoiAppDelegateViewOnly](EgoiPushLibrary/Classes/Delegates/EgoiAppDelegateViewOnly.swift). After that, you can call our methods **EgoiPusLibrary.shared.requestNotificationsPermission()**, **EgoiPushLibrary.shared.processNotification()** and **EgoiPushLibrary.shared.handleNotificationInteraction()** to process the notifications with our logic.
 
 # EgoiPushLibrary
 
@@ -184,9 +180,9 @@ You should call this method everytime a new Firebase token is generated. The tok
 
 #### EgoiPushLibrary.shared.processNotification()
 
-This method processes the received remote notification. If the remote notification is a geopush, creates a geofence that triggers a local notification when the user enters teh region. If it is a normal notification, shows the notification and opens a dialog with the actions defined in E-goi when the user opens thr notification banner.
+This method processes the received remote notification. If the remote notification is a geopush, creates a geofence that triggers a local notification when the user enters the region. If it is a normal notification, shows the notification and opens a dialog with the actions defined in E-goi when the user opens the notification banner.
 
-This method is already called inside the didReceiveRemoteNotification implemented in **EgoiAppDelegate.swift**.
+This method is already called inside the didReceiveRemoteNotification implemented in **EgoiAppDelegate.swift** but you can call it if you are the one processing the notification.
 
 <table>
 <thead>
@@ -216,6 +212,47 @@ This method is already called inside the didReceiveRemoteNotification implemente
 </tbody>
 </table>
 
+#### EgoiPushLibrary.shared.handleNotificationInteraction()
+
+This method handles the interaction of the user with the notification. If the user clicks the notification, open the app and launch a dialog with actions defined. If the user clicks on the "see" action, open the url defined on the notification in the default browser or tries to call the deeplinkCallback defined in the SDK configs. It also sends the event "open" or "canceled" to E-goi depending on the interaction of the user. 
+
+If you are the one handling the notifications, you should invoke this method inside the didReceive method of the UNUserNotificationCenterDelegate.
+
+<table>
+<thead>
+<tr>
+   <th>Property</th>
+   <th>Type</th>
+   <th>Description</th>
+   <th>Required</th>
+   <th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+   <td>response</td>
+   <td>UNNotificationResponse</td>
+   <td>The interaction the user made with the notification</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+<tr>
+   <td>userNotificationCenter</td>
+   <td>UNUserNotificationCenter</td>
+   <td>The current UNUserNotificationCenter instance. It is used to manage the notification categories created by E-goi.</td>
+   <td>false</td>
+   <td>nil</td>
+</tr>
+<tr>
+   <td>completionHandler</td>
+   <td>() -> Void</td>
+   <td>The callback to invoke after processing the interaction.</td>
+   <td>false</td>
+   <td>nil</td>
+</tr>
+</tbody>
+</table>
+
 ### Actions
 
 #### EgoiPushLibrary.shared.requestForegroundLocationAccess()
@@ -225,6 +262,10 @@ Requests the user permission to access the location when the app is in the foreg
 #### EgoiPushLibrary.shared.requestBackgroundLocationAccess()
 
 Requests the user permission to access the location when the app is in background (minimized or closed).
+
+#### EgoiPushLibrary.shared.requestNotificationsPermission()
+
+Requests the user permission to send push notifications.
 
 #### EgoiPushLibrary.shared.sendToken()
 

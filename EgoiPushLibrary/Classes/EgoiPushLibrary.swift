@@ -114,11 +114,14 @@ public final class EgoiPushLibrary {
     
     // MARK: - Notification
     
+    
+    /// Request the user permission to send push notifications
     public func requestNotificationsPermission() {
         notificationHandler?.requestPermission()
     }
     
-    /// Process the remote notification received
+    /// Process the remote notification received.
+    /// This method should be called inside of the didReceiveRemoteNotification method of the AppDelegate.
     /// - Parameters:
     ///   - userInfo: The data of the remote notification
     ///   - callback: The callback to call after processing the notification
@@ -130,6 +133,12 @@ public final class EgoiPushLibrary {
         callback(.noData)
     }
     
+    /// Handle the interactions of the user with the notification.
+    /// This method should be called inside of the didReceive method of the UNUserNotificationCenter.
+    /// - Parameters:
+    ///   - response: The interaction the user made with the notification.
+    ///   - userNotificationCenter: The current UNUserNotificationCenter instance. It is used to manage the notification categories created by E-goi.
+    ///   - completionHandler: The callback to invoke after processing the interaction.
     public func handleNotificationInteraction(
         response: UNNotificationResponse,
         userNotificationCenter: UNUserNotificationCenter? = nil,
