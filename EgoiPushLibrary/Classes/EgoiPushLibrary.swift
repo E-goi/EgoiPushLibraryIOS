@@ -21,6 +21,7 @@ public final class EgoiPushLibrary {
     var apiKey: String?
     
     var geoEnabled: Bool = true
+    var handleNotifications: Bool = true
     var dialogCallBack: ((EGoiMessage) -> Void)?
     var deepLinkCallBack: ((EGoiMessage) -> Void)?
     
@@ -113,16 +114,37 @@ public final class EgoiPushLibrary {
     
     // MARK: - Notification
     
-    /// Process the remote notification received
+    
+    /// Request the user permission to send push notifications
+    public func requestNotificationsPermission() {
+        notificationHandler?.requestPermission()
+    }
+    
+    /// Process the remote notification received.
+    /// This method should be called inside of the didReceiveRemoteNotification method of the AppDelegate.
     /// - Parameters:
     ///   - userInfo: The data of the remote notification
     ///   - callback: The callback to call after processing the notification
-    func processNotification(
+    public func processNotification(
         _ userInfo: [AnyHashable : Any],
         callback: @escaping (UIBackgroundFetchResult) -> Void
     ) {
         notificationHandler?.processNotification(userInfo: userInfo)
         callback(.noData)
+    }
+    
+    /// Handle the interactions of the user with the notification.
+    /// This method should be called inside of the didReceive method of the UNUserNotificationCenter.
+    /// - Parameters:
+    ///   - response: The interaction the user made with the notification.
+    ///   - userNotificationCenter: The current UNUserNotificationCenter instance. It is used to manage the notification categories created by E-goi.
+    ///   - completionHandler: The callback to invoke after processing the interaction.
+    public func handleNotificationInteraction(
+        response: UNNotificationResponse,
+        userNotificationCenter: UNUserNotificationCenter? = nil,
+        completionHandler: (() -> Void)? = nil
+    ) {
+        notificationHandler?.handleNotificationInteraction(response: response, userNotificationCenter: userNotificationCenter, completionHandler: completionHandler)
     }
     
     /// Send a local notification to the user

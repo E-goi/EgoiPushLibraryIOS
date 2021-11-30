@@ -10,6 +10,12 @@ import UIKit
 open class EgoiAppDelegate: UIResponder, UIApplicationDelegate {
     public var window: UIWindow?
     
+    override init() {
+        super.init()
+        
+        EgoiPushLibrary.shared.handleNotifications = true
+    }
+    
     /// Handle remote notifications received
     /// - Parameters:
     ///   - application: Current instance of the aplication

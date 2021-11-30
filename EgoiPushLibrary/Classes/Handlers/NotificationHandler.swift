@@ -9,17 +9,16 @@ import UIKit
 import UserNotifications
 import CoreLocation
 
-class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
+class NotificationHandler {
     var token: String?
     
-    private let userNotificationCenter = UNUserNotificationCenter.current()
     private let pendingNotifications = NSMutableDictionary()
+    private var notificationCenterHandler: NotificationCenterHandler?
     
-    override init() {
-        super.init()
-        userNotificationCenter.delegate = self
-        
-        requestPermission()
+    init() {
+        if EgoiPushLibrary.shared.handleNotifications {
+            notificationCenterHandler = NotificationCenterHandler()
+        }
     }
     
     /// Process the remote notification. Validate if it is a geopush and if it is create a geofence, otherwise, fire a notification.
@@ -70,29 +69,29 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     
     // MARK: - Notification handlers
     
-    /// Handle notifications when the app is in foreground
-    /// - Parameters:
-    ///   - center: The current UNUserNotificationCenter instance
-    ///   - notification: The notification received
-    ///   - completionHandler: The callback of the function
-    func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
-        willPresent notification: UNNotification,
-        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
-    ) {
-        completionHandler([UNNotificationPresentationOptions.alert, UNNotificationPresentationOptions.sound])
+    /// Request permission to send push notifications
+    func requestPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: [.alert, .sound, .badge]
+        ) { granted, error  in
+            if let _ = error {
+                return
+            }
+            
+            guard granted else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
     }
     
-    
-    /// Handle the interaction of the user with the notification
-    /// - Parameters:
-    ///   - center: The current UNUserNotificationCenter instance
-    ///   - response: The interaction of the user
-    ///   - completionHandler: The callback of the function
-    func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
-        didReceive response: UNNotificationResponse,
-        withCompletionHandler completionHandler: @escaping () -> Void
+    func handleNotificationInteraction(
+        response: UNNotificationResponse,
+        userNotificationCenter: UNUserNotificationCenter? = nil,
+        completionHandler: (() -> Void)? = nil
     ) {
         let userInfo = response.notification.request.content.userInfo
         
@@ -112,73 +111,58 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         EgoiPushLibrary.shared.sendEvent(EventType.RECEIVED.rawValue, message: message)
         
         switch response.actionIdentifier {
-        case UNNotificationDefaultActionIdentifier:
-            if let callback = EgoiPushLibrary.shared.dialogCallBack {
-                callback(message)
-            } else {
-                fireDialog(message)
-            }
-            break
-                
-        case "confirm":
-            EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
-            
-            if (message.data.actions.type == "deeplink") {
-                if let callback = EgoiPushLibrary.shared.deepLinkCallBack {
+            case UNNotificationDefaultActionIdentifier:
+                if let callback = EgoiPushLibrary.shared.dialogCallBack {
                     callback(message)
+                } else {
+                    fireDialog(message)
                 }
-            } else {
-                if let wrappedUrl = message.data.actions.url, let url = URL(string: wrappedUrl) {
-                    DispatchQueue.main.async {
-                        if UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url)
+                break
+                    
+            case "confirm":
+                EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
+                
+                if message.data.actions.type == "deeplink" {
+                    if let callback = EgoiPushLibrary.shared.deepLinkCallBack {
+                        callback(message)
+                    }
+                } else {
+                    if let wrappedUrl = message.data.actions.url, let url = URL(string: wrappedUrl) {
+                        DispatchQueue.main.async {
+                            if UIApplication.shared.canOpenURL(url) {
+                                UIApplication.shared.open(url)
+                            }
                         }
                     }
                 }
-            }
-            break
-                
-        case "close":
-            EgoiPushLibrary.shared.sendEvent(EventType.CLOSE.rawValue, message: message)
-            break
-                
-        default:
-            break
+                break
+                    
+            case "close":
+                EgoiPushLibrary.shared.sendEvent(EventType.CLOSE.rawValue, message: message)
+                break
+                    
+            default:
+                break
         }
-        
-        userNotificationCenter.getNotificationCategories{cats in
-            var categories = cats as Set<UNNotificationCategory>
-            categories = categories.filter { $0.identifier != "temp_cat" }
-            categories = categories.filter { $0.identifier != message.data.messageHash }
             
-            self.userNotificationCenter.setNotificationCategories(categories)
-            
-            DispatchQueue.main.async {
-                completionHandler();
+        if let unc = userNotificationCenter {
+            unc.getNotificationCategories{cats in
+                var categories = cats as Set<UNNotificationCategory>
+                categories = categories.filter { $0.identifier != "temp_cat" }
+                categories = categories.filter { $0.identifier != message.data.messageHash }
+                
+                unc.setNotificationCategories(categories)
+                
+                if let ch = completionHandler {
+                    DispatchQueue.main.async {
+                        ch()
+                    }
+                }
             }
         }
     }
     
     // MARK: - Private Functions
-    
-    /// Request permission to send push notifications
-    private func requestPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: [.alert, .sound, .badge]
-        ) { granted, error  in
-            if let _ = error {
-                return
-            }
-            
-            guard granted else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
     
     /// Build a message with the notification data and add it to the pending notifications map
     /// - Parameter userInfo: The notification data
