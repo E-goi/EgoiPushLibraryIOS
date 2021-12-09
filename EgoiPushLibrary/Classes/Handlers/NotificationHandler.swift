@@ -112,10 +112,14 @@ class NotificationHandler {
         
         switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
-                if let callback = EgoiPushLibrary.shared.dialogCallBack {
-                    callback(message)
+                if message.data.actions.text != "" && message.data.actions.type != "" && message.data.actions.url != "" && message.data.actions.textCancel != "" {
+                    if let callback = EgoiPushLibrary.shared.dialogCallBack {
+                        callback(message)
+                    } else {
+                        fireDialog(message)
+                    }
                 } else {
-                    fireDialog(message)
+                    EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
                 }
                 break
                     
