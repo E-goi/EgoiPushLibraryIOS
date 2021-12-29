@@ -1,10 +1,11 @@
-# What's new in version 2.1.0?
+# What's new in version 2.2.0?
 
 ### MINOR:
 
-#### Allow user to take control of the notifications:
+#### Save launch app action in preferences:
 
-It is now possible to take control of the UNUserNotificationCenter and call our methods when you need to. To do that, you just need to extend the new class [EgoiAppDelegateViewOnly](EgoiPushLibrary/Classes/Delegates/EgoiAppDelegateViewOnly.swift). After that, you can call our methods **EgoiPusLibrary.shared.requestNotificationsPermission()**, **EgoiPushLibrary.shared.processNotification()** and **EgoiPushLibrary.shared.handleNotificationInteraction()** to process the notifications with our logic.
+The launch action defined in the config method, is now saved in datastore so it can be read before
+the SDK is initialized
 
 # EgoiPushLibrary
 
