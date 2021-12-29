@@ -2,10 +2,10 @@
 
 ### MINOR:
 
-#### Save launch app action in preferences:
+#### Send "open" event when there is no actions:
 
-The launch action defined in the config method, is now saved in datastore so it can be read before
-the SDK is initialized
+Now, when the notifications don't have an action defined and the user taps the notification, the
+"open" event is sent to E-goi.
 
 # EgoiPushLibrary
 
