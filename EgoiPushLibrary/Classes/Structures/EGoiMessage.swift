@@ -6,39 +6,40 @@
 //
 
 public struct EGoiMessage {
-    var notification: EGoiMessageNotification = EGoiMessageNotification()
-    var data: EGoiMessageData = EGoiMessageData()
+    public init() {}
+    public var notification: EGoiMessageNotification = EGoiMessageNotification()
+    public var data: EGoiMessageData = EGoiMessageData()
 }
 
-struct EGoiMessageNotification {
-    var title: String?
-    var body: String?
-    var image: String?
+public struct EGoiMessageNotification {
+    public var title: String?
+    public var body: String?
+    public var image: String?
 }
 
-struct EGoiMessageData {
-    var os: String = "ios"
-    var messageHash: String?
-    var listId: Int?
-    var contactId: String?
-    var accountId: Int?
-    var applicationId: String?
-    var messageId: Int?
-    var deviceId: Int = 0
-    var geo: EGoiMessageDataGeo = EGoiMessageDataGeo()
-    var actions: EGoiMessageDataAction = EGoiMessageDataAction()
+public struct EGoiMessageData {
+    public var os: String = "ios"
+    public var messageHash: String?
+    public var listId: Int?
+    public var contactId: String?
+    public var accountId: Int?
+    public var applicationId: String?
+    public var messageId: Int?
+    public var deviceId: Int = 0
+    public var geo: EGoiMessageDataGeo = EGoiMessageDataGeo()
+    public var actions: EGoiMessageDataAction = EGoiMessageDataAction()
 }
 
-struct EGoiMessageDataGeo {
-    var latitude: Double?
-    var longitude: Double?
-    var radius: Double?
-    var duration: Int?
+public struct EGoiMessageDataGeo {
+    public var latitude: Double?
+    public var longitude: Double?
+    public var radius: Double?
+    public var duration: Int?
 }
 
-struct EGoiMessageDataAction {
-    var type: String?
-    var text: String?
-    var url: String?
-    var textCancel: String?
+public struct EGoiMessageDataAction {
+    public var type: String?
+    public var text: String?
+    public var url: String?
+    public var textCancel: String?
 }

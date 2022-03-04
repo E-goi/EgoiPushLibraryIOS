@@ -309,6 +309,38 @@ Registers the Firebase token on the E-goi list. You only need to call this metho
 </tbody>
 </table>
 
+#### EgoiPushLibrary.shared.registerEvent()
+
+Register an event related to a notification in E-goi.
+
+<table>
+<thead>
+<tr>
+   <th>Property</th>
+   <th>Type</th>
+   <th>Description</th>
+   <th>Required</th>
+   <th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+   <td>event</td>
+   <td>String</td>
+   <td>The event to register in E-goi.</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+<tr>
+   <td>message</td>
+   <td>EGoiMessage</td>
+   <td>The message associated to the event</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+</tbody>
+</table>
+
 ## Author
 
 E-goi, integrations@e-goi.com

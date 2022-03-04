@@ -17,7 +17,7 @@ class NotificationHandler {
     
     init() {
         if EgoiPushLibrary.shared.handleNotifications {
-            notificationCenterHandler = NotificationCenterHandler()
+            notificationCenterHandler = NotificationCenterHandler(self)
         }
     }
     
@@ -108,7 +108,7 @@ class NotificationHandler {
             }
         }
         
-        EgoiPushLibrary.shared.sendEvent(EventType.RECEIVED.rawValue, message: message)
+        EgoiPushLibrary.shared.registerEvent(EventType.RECEIVED.rawValue, message: message)
         
         switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
@@ -119,12 +119,12 @@ class NotificationHandler {
                         fireDialog(message)
                     }
                 } else {
-                    EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
+                    EgoiPushLibrary.shared.registerEvent(EventType.OPEN.rawValue, message: message)
                 }
                 break
                     
             case "confirm":
-                EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
+                EgoiPushLibrary.shared.registerEvent(EventType.OPEN.rawValue, message: message)
                 
                 if message.data.actions.type == "deeplink" {
                     if let callback = EgoiPushLibrary.shared.deepLinkCallBack {
@@ -142,7 +142,7 @@ class NotificationHandler {
                 break
                     
             case "close":
-                EgoiPushLibrary.shared.sendEvent(EventType.CLOSE.rawValue, message: message)
+                EgoiPushLibrary.shared.registerEvent(EventType.CLOSE.rawValue, message: message)
                 break
                     
             default:
@@ -242,7 +242,7 @@ class NotificationHandler {
                 title: textCancel,
                 style: .destructive,
                 handler: { _ in
-                    EgoiPushLibrary.shared.sendEvent(EventType.CLOSE.rawValue, message: message)
+                    EgoiPushLibrary.shared.registerEvent(EventType.CLOSE.rawValue, message: message)
                 }
             )
             
@@ -253,7 +253,7 @@ class NotificationHandler {
                     title: text,
                     style: .default,
                     handler: { _ in
-                        EgoiPushLibrary.shared.sendEvent(EventType.OPEN.rawValue, message: message)
+                        EgoiPushLibrary.shared.registerEvent(EventType.OPEN.rawValue, message: message)
                         
                         if (type == "deeplink") {
                             if let callback = EgoiPushLibrary.shared.deepLinkCallBack {

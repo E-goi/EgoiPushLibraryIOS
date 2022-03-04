@@ -46,6 +46,8 @@ extension AppDelegate : MessagingDelegate {
             return
         }
         
+        print("Token: " + token)
+        
         EgoiPushLibrary.shared.addFCMToken(token: token)
     }
 }

@@ -163,7 +163,7 @@ public final class EgoiPushLibrary {
     /// - Parameters:
     ///   - event: The interaction of the user
     ///   - message: The notification the user interacted with
-    func sendEvent(_ event: String, message: EGoiMessage) {
+    public func registerEvent(_ event: String, message: EGoiMessage) {
         guard let apiKey = self.apiKey,
               let appId = self.appId,
               let contactId = message.data.contactId,

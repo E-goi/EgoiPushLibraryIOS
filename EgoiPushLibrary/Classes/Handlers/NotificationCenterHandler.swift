@@ -8,11 +8,11 @@
 class NotificationCenterHandler: NSObject, UNUserNotificationCenterDelegate {
     private let userNotificationCenter = UNUserNotificationCenter.current()
     
-    override init() {
+    init(_ notificationHandler: NotificationHandler) {
         super.init()
         userNotificationCenter.delegate = self
         
-        EgoiPushLibrary.shared.requestNotificationsPermission()
+        notificationHandler.requestPermission()
     }
     
     /// Handle notifications when the app is in foreground
