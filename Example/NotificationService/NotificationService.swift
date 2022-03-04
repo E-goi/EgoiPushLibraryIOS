@@ -53,6 +53,11 @@ class NotificationService: UNNotificationServiceExtension {
         }
         
         if let actions = convertToDictionary(actionsString) {
+            if actions["url"] == "" {
+                callback(bestAttemptContent)
+                return
+            }
+            
             let confirmAction = UNNotificationAction(identifier: "confirm", title: actions["text"] ?? "", options: UNNotificationActionOptions.foreground)
             let cancelAction = UNNotificationAction(identifier: "close", title: actions["text-cancel"] ?? "", options: UNNotificationActionOptions.destructive)
             
