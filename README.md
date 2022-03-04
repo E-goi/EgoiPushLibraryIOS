@@ -1,11 +1,14 @@
-# What's new in version 2.2.0?
+# What's new in version 2.2.1?
 
-### MINOR:
+### PATCH:
 
-#### Send "open" event when there is no actions:
+#### registerEvent method is now public:
 
-Now, when the notifications don't have an action defined and the user taps the notification, the
-"open" event is sent to E-goi.
+The method registerEvent used to send events to E-goi is now public so you can register the events when using custom handlers.
+
+#### Don't add actions buttons when there isn't an url defined:
+
+Fixed a bug where, if you sent a notification with an image and with no actions, the buttons were still being displayed.
 
 # EgoiPushLibrary
 
