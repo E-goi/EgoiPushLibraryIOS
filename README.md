@@ -1,11 +1,14 @@
-# What's new in version 2.2.0?
+# What's new in version 2.2.1?
 
-### MINOR:
+### PATCH:
 
-#### Send "open" event when there is no actions:
+#### registerEvent method is now public:
 
-Now, when the notifications don't have an action defined and the user taps the notification, the
-"open" event is sent to E-goi.
+The method registerEvent used to send events to E-goi is now public so you can register the events when using custom handlers.
+
+#### Don't add actions buttons when there isn't an url defined:
+
+Fixed a bug where, if you sent a notification with an image and with no actions, the buttons were still being displayed.
 
 # EgoiPushLibrary
 
@@ -303,6 +306,38 @@ Registers the Firebase token on the E-goi list. You only need to call this metho
    <td>callback</td>
    <td>@escaping (_ success: Bool, _ message: String?) -> Void</td>
    <td>The callback that will be called when the E-goi's server finishes processing the request</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+</tbody>
+</table>
+
+#### EgoiPushLibrary.shared.registerEvent()
+
+Register an event related to a notification in E-goi.
+
+<table>
+<thead>
+<tr>
+   <th>Property</th>
+   <th>Type</th>
+   <th>Description</th>
+   <th>Required</th>
+   <th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+   <td>event</td>
+   <td>String</td>
+   <td>The event to register in E-goi.</td>
+   <td>true</td>
+   <td>---</td>
+</tr>
+<tr>
+   <td>message</td>
+   <td>EGoiMessage</td>
+   <td>The message associated to the event</td>
    <td>true</td>
    <td>---</td>
 </tr>

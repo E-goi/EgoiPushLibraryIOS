@@ -15,7 +15,7 @@ public enum HttpMethod: String {
 }
 
 // Event type for push
-enum EventType: String {
+public enum EventType: String {
     case OPEN = "open"
     case CLOSE = "canceled"
     case RECEIVED = "received"
