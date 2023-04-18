@@ -25,7 +25,6 @@ public struct EGoiMessageData {
     public var accountId: Int?
     public var applicationId: String?
     public var messageId: Int?
-    public var deviceId: Int = 0
     public var geo: EGoiMessageDataGeo = EGoiMessageDataGeo()
     public var actions: EGoiMessageDataAction = EGoiMessageDataAction()
 }
@@ -35,6 +34,8 @@ public struct EGoiMessageDataGeo {
     public var longitude: Double?
     public var radius: Double?
     public var duration: Int?
+    public var periodStart: String?
+    public var periodEnd: String?
 }
 
 public struct EGoiMessageDataAction {

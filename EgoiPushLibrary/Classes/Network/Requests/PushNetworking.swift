@@ -77,7 +77,6 @@ final class PushNetworking {
     ///   - apiKey: the client api key
     ///   - contactID: the current contact id (related to the E-Goi message)
     ///   - messageHash: the message hash (E-Goi internal)
-    ///   - deviceId: the current device id
     ///   - event: the event to send to the server
     ///   - callback: the callback
     static func sendEvent(
@@ -85,7 +84,6 @@ final class PushNetworking {
         apiKey: String,
         contactID: String,
         messageHash: String,
-        deviceId: Int,
         event: String,
         callback: @escaping (_ success: Bool) -> Void
     ) {
@@ -100,8 +98,7 @@ final class PushNetworking {
             "contact": contactID,
             "os": "ios",
             "message_hash": messageHash,
-            "event": event,
-            "device_id": deviceId
+            "event": event
         ]
         
         let request = NetworkRequest(

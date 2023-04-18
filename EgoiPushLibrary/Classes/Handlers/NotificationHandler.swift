@@ -12,7 +12,7 @@ import CoreLocation
 class NotificationHandler {
     var token: String?
     
-    private let pendingNotifications = NSMutableDictionary()
+    var pendingNotifications: [String: EGoiMessage] = [:]
     private var notificationCenterHandler: NotificationCenterHandler?
     
     init() {
@@ -43,7 +43,7 @@ class NotificationHandler {
     /// Send a local notification to the user
     /// - Parameter key: The id of the notification saved in the pendingNotifications
     func fireNotification(key: String) {
-        guard let message = pendingNotifications[key] as? EGoiMessage else {
+        guard let message = pendingNotifications[key] else {
             return
         }
         
@@ -64,7 +64,7 @@ class NotificationHandler {
     /// Delete a pending notification
     /// - Parameter key: The hash of the notification to be removed
     func deletePendingNotification(key: String) {
-        pendingNotifications.removeObject(forKey: key)
+        pendingNotifications.removeValue(forKey: key)
     }
     
     // MARK: - Notification handlers
@@ -100,9 +100,9 @@ class NotificationHandler {
         if let _ = userInfo["aps"] {
             message = buildMessage(userInfo: userInfo)!
         } else {
-            if let key = userInfo["key"] as? String, let msg = pendingNotifications[key] as? EGoiMessage {
+            if let key = userInfo["key"] as? String, let msg = pendingNotifications[key] {
                 message = msg
-                pendingNotifications.removeObject(forKey: key)
+                pendingNotifications.removeValue(forKey: key)
             } else {
                 return
             }
@@ -198,15 +198,17 @@ class NotificationHandler {
                 message.data.messageId = Int(messageId)
             }
             
-            if let deviceId = aps["device-id"] as? String {
-                message.data.deviceId = Int(deviceId) ?? 0
-            }
-            
-            if let latitude = aps["latitude"] as? String, let longitude = aps["longitude"] as? String, let radius = aps["radius"] as? String, let duration = aps["duration"] as? String {
+            if let latitude = aps["latitude"] as? String,
+               let longitude = aps["longitude"] as? String,
+               let radius = aps["radius"] as? String,
+               let duration = aps["duration"] as? String
+            {
                 message.data.geo.latitude = Double(latitude)
                 message.data.geo.longitude = Double(longitude)
                 message.data.geo.radius = Double(radius)
                 message.data.geo.duration = Int(duration)
+                message.data.geo.periodStart = aps["time-start"] as? String ?? ""
+                message.data.geo.periodEnd = aps["time-end"] as? String ?? ""
             }
             
             if let actions = aps["actions"] as? String {
@@ -220,7 +222,7 @@ class NotificationHandler {
                 }
             }
             
-            pendingNotifications.setValue(message, forKey: message.data.messageHash!)
+            pendingNotifications[message.data.messageHash!] = message
             
             return message
         }
@@ -297,7 +299,8 @@ class NotificationHandler {
                     return
                 }
                 
-                self.pendingNotifications.removeObject(forKey: key)
+                self.pendingNotifications.removeValue(forKey: key)
+                
                 UIApplication.shared.applicationIconBadgeNumber = 0
             }
         }

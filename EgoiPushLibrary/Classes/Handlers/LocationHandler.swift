@@ -120,7 +120,34 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
         if let region = region as? CLCircularRegion {
             let identifier = region.identifier
             
-            EgoiPushLibrary.shared.fireNotification(key: identifier)
+            guard let notification = EgoiPushLibrary.shared.getPendingNotification(identifier: identifier) else {
+                print("Notification not found for current region.")
+                return
+            }
+            
+            if let periodStart = notification.data.geo.periodStart,
+               let periodEnd = notification.data.geo.periodEnd,
+               periodStart != "",
+               periodEnd != ""
+            {
+                let periodStartSplit = periodStart.split(separator: ":")
+                let periodEndSplit = periodEnd.split(separator: ":")
+
+                let date = Date()
+
+                guard let startHour = Int(periodStartSplit[0]),
+                      let startMinute = Int(periodStartSplit[1]),
+                      let startDate = Calendar.current.date(bySettingHour: startHour, minute: startMinute, second: 0, of: date),
+                      let endHour = Int(periodEndSplit[0]),
+                      let endMinute = Int(periodEndSplit[1]),
+                      let endDate = Calendar.current.date(bySettingHour: endHour, minute: endMinute, second: 0, of: date),
+                      date >= startDate,
+                      date <= endDate
+                else {
+                    print("Outside defined period.")
+                    return
+                }
+            }
             
             if let timer = pendingTimers[identifier] as? Timer {
                 timer.invalidate()

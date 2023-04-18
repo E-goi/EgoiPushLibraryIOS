@@ -153,6 +153,13 @@ public final class EgoiPushLibrary {
         notificationHandler?.fireNotification(key: key)
     }
     
+    /// Get a pending notification with the specified identifier.
+    /// - Parameters:
+    ///   - indetifier: The identifier of the pending notification.
+    func getPendingNotification(identifier: String) -> EGoiMessage? {
+        return notificationHandler?.pendingNotifications[identifier]
+    }
+    
     func deletePendingNotification(key: String) {
         notificationHandler?.deletePendingNotification(key: key)
     }
@@ -184,7 +191,6 @@ public final class EgoiPushLibrary {
                 apiKey: apiKey,
                 contactID: contactId,
                 messageHash: messageHash,
-                deviceId: message.data.deviceId,
                 event: event
             ) { success in
                 print("Sent event: \(event) to server. Result: \(success)")
