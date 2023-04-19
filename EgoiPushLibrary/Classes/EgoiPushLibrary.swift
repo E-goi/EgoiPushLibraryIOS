@@ -94,22 +94,24 @@ public final class EgoiPushLibrary {
         }
     }
     
-    /// Create a geofence that will trigger a notification
-    /// - Parameter message: The data of the notification to be triggered
-    func createGeofence(message: EGoiMessage) {
-        if self.geoEnabled {
-            locationHandler?.createGeofence(message: message)
-        }
-    }
-    
-    /// Check if the monitoring of geofences is available
-    /// - Returns: True or False
-    func isMonitoringAvailable() -> Bool {
-        guard let handler = locationHandler else {
-            return false
+    /// Monitor a region with the specified geographic data.
+    /// - Parameters:
+    ///   - latitude: The coordinate for the latiude of the center of the region.
+    ///   - longiude: The coordinate for the longitude of the center of the region.
+    ///   - radius: The radius of the region.
+    ///   - duration: The duration of the region.
+    ///   - identifier: The identifier of the region.
+    func monitorRegion(_ latitude: Double, _ longitude: Double, _ radius: Double, _ duration: Int, identifier: String) {
+        guard self.geoEnabled else {
+            print("The feature to monitor regions is disabled.")
+            return
         }
         
-        return handler.isMonitoringAvailable()
+        guard let region = locationHandler?.createRegionAtCoordinates(latitude, longitude, radius, identifier) else {
+            return
+        }
+        
+        locationHandler?.monitorRegion(region: region, duration: duration)
     }
     
     // MARK: - Notification
@@ -173,8 +175,8 @@ public final class EgoiPushLibrary {
     public func registerEvent(_ event: String, message: EGoiMessage) {
         guard let apiKey = self.apiKey,
               let appId = self.appId,
-              let contactId = message.data.contactId,
-              let messageHash = message.data.messageHash
+              message.data.contactId != "",
+              message.data.messageHash != ""
         else {
             return
         }
@@ -189,8 +191,8 @@ public final class EgoiPushLibrary {
             PushNetworking.sendEvent(
                 appId: appId,
                 apiKey: apiKey,
-                contactID: contactId,
-                messageHash: messageHash,
+                contactId: message.data.contactId,
+                messageHash: message.data.messageHash,
                 event: event
             ) { success in
                 print("Sent event: \(event) to server. Result: \(success)")
@@ -216,12 +218,12 @@ public final class EgoiPushLibrary {
         }
         
         guard let wrappedToken = notificationHandler?.token else {
-            callback(false, "Não existe token para enviar")
+            callback(false, "There is no token to send.")
             return
         }
         
         guard let wrappedApiKey = self.apiKey, let wrappedAppId = self.appId else {
-            callback(false, "Falta configuração de conta!")
+            callback(false, "Account configurations missing.")
             return
         }
         
@@ -236,7 +238,7 @@ public final class EgoiPushLibrary {
                 self.tokenRegistered = true
             }
             
-            callback(success, success ? nil : "Erro ao registar o token")
+            callback(success, success ? nil : "Error registering the token.")
         }
     }
 }

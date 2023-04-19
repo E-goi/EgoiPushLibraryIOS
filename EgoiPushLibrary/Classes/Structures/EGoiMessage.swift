@@ -6,41 +6,48 @@
 //
 
 public struct EGoiMessage {
-    public init() {}
     public var notification: EGoiMessageNotification = EGoiMessageNotification()
     public var data: EGoiMessageData = EGoiMessageData()
-}
+    
+    public struct EGoiMessageNotification {
+        public var title: String = ""
+        public var body: String = ""
+        public var image: String = ""
+    }
+    
+    public struct EGoiMessageData {
+        public var os: String = "ios"
+        public var messageHash: String = ""
+        public var listId: Int = 0
+        public var contactId: String = ""
+        public var accountId: Int = 0
+        public var applicationId: String = ""
+        public var messageId: Int = 0
+        public var geo: EGoiMessageDataGeo = EGoiMessageDataGeo()
+        public var actions: EGoiMessageDataAction = EGoiMessageDataAction()
+        
+        public struct EGoiMessageDataGeo {
+            public var latitude: Double = 0.0
+            public var longitude: Double = 0.0
+            public var radius: Double = 0.0
+            public var duration: Int = 0
+            public var periodStart: String? = nil
+            public var periodEnd: String? = nil
+        }
 
-public struct EGoiMessageNotification {
-    public var title: String?
-    public var body: String?
-    public var image: String?
-}
+        public struct EGoiMessageDataAction: Codable {
+            public var type: String = ""
+            public var text: String = ""
+            public var url: String = ""
+            public var textCancel: String = ""
+            
+            private enum CodingKeys: String, CodingKey {
+                case type
+                case text
+                case url
+                case textCancel = "text-cancel"
+            }
+        }
+    }
 
-public struct EGoiMessageData {
-    public var os: String = "ios"
-    public var messageHash: String?
-    public var listId: Int?
-    public var contactId: String?
-    public var accountId: Int?
-    public var applicationId: String?
-    public var messageId: Int?
-    public var geo: EGoiMessageDataGeo = EGoiMessageDataGeo()
-    public var actions: EGoiMessageDataAction = EGoiMessageDataAction()
-}
-
-public struct EGoiMessageDataGeo {
-    public var latitude: Double?
-    public var longitude: Double?
-    public var radius: Double?
-    public var duration: Int?
-    public var periodStart: String?
-    public var periodEnd: String?
-}
-
-public struct EGoiMessageDataAction {
-    public var type: String?
-    public var text: String?
-    public var url: String?
-    public var textCancel: String?
 }
