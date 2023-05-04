@@ -196,7 +196,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
     ///   - region: The region that will be associated with the timer.
     private func startTimer(_ duration: Int, _ region: CLCircularRegion) {
         let calendar = Calendar.current
-        let date = calendar.date(byAdding: .second, value: duration, to: Date())
+        let date = calendar.date(byAdding: .second, value: duration / 1000, to: Date())
         
         guard let date = date else {
             print("Invalid date format.")
