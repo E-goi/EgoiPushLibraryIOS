@@ -1,14 +1,10 @@
-# What's new in version 2.2.1?
+# What's new in version 2.3.0?
 
-### PATCH:
+### MINOR
 
-#### registerEvent method is now public:
+#### Geolocation period
 
-The method registerEvent used to send events to E-goi is now public so you can register the events when using custom handlers.
-
-#### Don't add actions buttons when there isn't an url defined:
-
-Fixed a bug where, if you sent a notification with an image and with no actions, the buttons were still being displayed.
+You can now define a period for when the notification can be displayed (through E-goi's platform).
 
 # EgoiPushLibrary
 

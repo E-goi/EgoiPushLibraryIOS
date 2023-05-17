@@ -75,33 +75,41 @@ final class PushNetworking {
     /// - Parameters:
     ///   - appId: the client app id
     ///   - apiKey: the client api key
-    ///   - contactID: the current contact id (related to the E-Goi message)
+    ///   - contactId: the current contact id (related to the E-Goi message)
     ///   - messageHash: the message hash (E-Goi internal)
-    ///   - deviceId: the current device id
     ///   - event: the event to send to the server
     ///   - callback: the callback
     static func sendEvent(
         appId: String,
         apiKey: String,
-        contactID: String,
+        contactId: String,
         messageHash: String,
-        deviceId: Int,
         event: String,
         callback: @escaping (_ success: Bool) -> Void
     ) {
-        if contactID == "" {
-            DispatchQueue.main.async {
-                callback (true)
-            }
+        guard appId != "" else {
+            print("The app ID cannot be empty.")
+            callback(false)
+            return
+        }
+        
+        guard apiKey != "" else {
+            print("The API key cannot be empty.")
+            callback(false)
+            return
+        }
+        
+        guard contactId != "" else {
+            print("The contact ID cannot be empty.")
+            callback(false)
             return
         }
         
         let json: NSMutableDictionary = [
-            "contact": contactID,
+            "contact": contactId,
             "os": "ios",
             "message_hash": messageHash,
-            "event": event,
-            "device_id": deviceId
+            "event": event
         ]
         
         let request = NetworkRequest(
