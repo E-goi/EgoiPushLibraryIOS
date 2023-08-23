@@ -30,6 +30,10 @@ class AppDelegate: EgoiAppDelegate {
         
         return true
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber == 0 ? 0 : UIApplication.shared.applicationIconBadgeNumber - 1
+    }
 }
 
 extension AppDelegate : MessagingDelegate {
