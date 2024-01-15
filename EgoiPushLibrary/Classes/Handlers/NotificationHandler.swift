@@ -191,6 +191,7 @@ class NotificationHandler {
         message.notification.image = aps["image"] as? String ?? ""
         
         message.data.messageHash = messageHash
+        message.data.mailingId = Int(aps["mailing-id"] as! String) ?? 0
         message.data.listId = Int(aps["list-id"] as! String) ?? 0
         message.data.contactId = aps["contact-id"] as? String ?? ""
         message.data.accountId = Int(aps["account-id"] as! String) ?? 0
