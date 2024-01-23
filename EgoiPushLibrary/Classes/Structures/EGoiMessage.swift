@@ -18,6 +18,7 @@ public struct EGoiMessage {
     public struct EGoiMessageData {
         public var os: String = "ios"
         public var messageHash: String = ""
+        public var mailingId: Int = 0
         public var listId: Int = 0
         public var contactId: String = ""
         public var accountId: Int = 0

@@ -1,10 +1,10 @@
-# What's new in version 2.3.0?
+# What's new in version 2.3.2?
 
 ### MINOR
 
-#### Geolocation period
+#### Notification payload
 
-You can now define a period for when the notification can be displayed (through E-goi's platform).
+Added mailing_id to event payload request to add more detail into subscriber activity when they receive a push notification
 
 # EgoiPushLibrary
 

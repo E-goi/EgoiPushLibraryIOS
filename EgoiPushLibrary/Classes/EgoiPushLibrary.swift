@@ -193,6 +193,7 @@ public final class EgoiPushLibrary {
                 apiKey: apiKey,
                 contactId: message.data.contactId,
                 messageHash: message.data.messageHash,
+                mailingId: message.data.mailingId,
                 event: event
             ) { success in
                 print("Sent event: \(event) to server. Result: \(success)")

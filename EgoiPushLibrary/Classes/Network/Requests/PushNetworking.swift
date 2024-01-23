@@ -84,6 +84,7 @@ final class PushNetworking {
         apiKey: String,
         contactId: String,
         messageHash: String,
+        mailingId: Int,
         event: String,
         callback: @escaping (_ success: Bool) -> Void
     ) {
@@ -109,6 +110,7 @@ final class PushNetworking {
             "contact": contactId,
             "os": "ios",
             "message_hash": messageHash,
+            "mailing_id": mailingId,
             "event": event
         ]
         
