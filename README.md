@@ -1,10 +1,10 @@
-# What's new in version 2.3.2?
+# What's new in version 2.3.3?
 
-### MINOR
+### PATCH
 
-#### Notification payload
+#### HTTP requests identification
 
-Added mailing_id to event payload request to add more detail into subscriber activity when they receive a push notification
+Added an identifier to the HTTP requests.
 
 # EgoiPushLibrary
 
