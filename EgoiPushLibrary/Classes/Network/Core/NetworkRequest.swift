@@ -133,6 +133,7 @@ final class NetworkRequest {
         self.request?.httpMethod = method.rawValue
         
         request?.addValue(apiKey, forHTTPHeaderField: "ApiKey")
+        request?.addValue("E-goi", forHTTPHeaderField: "User-Agent")
         
         if (method == .POST || method == .PUT) {
             request?.addValue(
