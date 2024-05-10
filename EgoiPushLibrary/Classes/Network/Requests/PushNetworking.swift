@@ -4,6 +4,7 @@
 //
 //  Created by João Silva on 15/01/2021.
 //
+import Foundation
 
 final class PushNetworking {
     
