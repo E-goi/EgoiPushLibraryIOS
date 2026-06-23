@@ -1,5 +1,5 @@
 PODS:
-  - EgoiPushLibrary (2.3.0)
+  - EgoiPushLibrary (2.3.3)
   - Firebase/CoreOnly (10.19.0):
     - FirebaseCore (= 10.19.0)
   - Firebase/Messaging (10.19.0):
@@ -54,11 +54,12 @@ PODS:
   - PromisesObjC (2.3.1)
 
 DEPENDENCIES:
-  - EgoiPushLibrary (from `../`)
+  - EgoiPushLibrary
   - Firebase/Messaging
 
 SPEC REPOS:
   trunk:
+    - EgoiPushLibrary
     - Firebase
     - FirebaseCore
     - FirebaseCoreInternal
@@ -69,12 +70,8 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
 
-EXTERNAL SOURCES:
-  EgoiPushLibrary:
-    :path: "../"
-
 SPEC CHECKSUMS:
-  EgoiPushLibrary: 678f8c2d01c7a4e6902eee0dde3e817625d3e2f7
+  EgoiPushLibrary: 184fe80e065f47347d33baefa2247cd87307f57c
   Firebase: 63ce8ece0d43743dc28eacac0c6867a2d7fd5a9d
   FirebaseCore: dc5c7badf99d47613c52b2e3a57a64cd187f8554
   FirebaseCoreInternal: b444828ea7cfd594fca83046b95db98a2be4f290
@@ -85,6 +82,6 @@ SPEC CHECKSUMS:
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
 
-PODFILE CHECKSUM: 73323e48e4f73bf5f258bf1975248e9ff04fba64
+PODFILE CHECKSUM: 917a3bb7729f207f253a0f1a7a4c53edb36adcb5
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.16.2

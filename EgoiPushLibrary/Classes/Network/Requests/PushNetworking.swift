@@ -9,19 +9,20 @@ final class PushNetworking {
     
     /// Sent the token to server with the saved configuration
     /// - Parameters:
-    ///   - appId: the app id
-    ///   - apiKey: the client apiu key
     ///   - field: the field to the two steps validation
     ///   - value: the value for that field
     ///   - token: the device token (string)
     ///   - callback: the success result of the request
     static func sendToken(
-        appId: String,
-        apiKey: String,
         field: String?,
         value: String?,
         token: String,
-        callback: @escaping (_ success: Bool) -> Void) {
+        callback: @escaping (_ success: Bool) -> Void
+    ) {
+        guard let (appId, apiKey, userAgent) = NetworkUtils.retrieveAuthenticationData() else {
+            callback(false)
+            return
+        }
         
         let json: NSMutableDictionary = [
             "token": token,
@@ -37,8 +38,9 @@ final class PushNetworking {
         
         let request = NetworkRequest(
             apiKey: apiKey,
-            endPoint: Endpoints.endPoint + appId + Endpoints.register,
+            endPoint: "\(Endpoints.endPoint)\(appId)\(Endpoints.register)",
             method: .POST,
+            userAgent: userAgent,
             json: json)
         
         request.send { (data) in
@@ -73,34 +75,23 @@ final class PushNetworking {
     
     /// Send an event related to the push handling to the server
     /// - Parameters:
-    ///   - appId: the client app id
-    ///   - apiKey: the client api key
     ///   - contactId: the current contact id (related to the E-Goi message)
     ///   - messageHash: the message hash (E-Goi internal)
     ///   - event: the event to send to the server
     ///   - callback: the callback
     static func sendEvent(
-        appId: String,
-        apiKey: String,
         contactId: String,
         messageHash: String,
         mailingId: Int,
         event: String,
         callback: @escaping (_ success: Bool) -> Void
     ) {
-        guard appId != "" else {
-            print("The app ID cannot be empty.")
+        guard let (appId, apiKey, userAgent) = NetworkUtils.retrieveAuthenticationData() else {
             callback(false)
             return
         }
         
-        guard apiKey != "" else {
-            print("The API key cannot be empty.")
-            callback(false)
-            return
-        }
-        
-        guard contactId != "" else {
+        guard !contactId.isEmpty else {
             print("The contact ID cannot be empty.")
             callback(false)
             return
@@ -118,6 +109,7 @@ final class PushNetworking {
             apiKey: apiKey,
             endPoint: Endpoints.endPoint + appId + Endpoints.event,
             method: .POST,
+            userAgent: userAgent,
             json: json
         )
         

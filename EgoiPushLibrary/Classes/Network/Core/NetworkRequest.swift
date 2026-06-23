@@ -21,7 +21,7 @@ final class NetworkRequest {
     ///   - endPoint: the endpoint
     ///   - method: the http method (GET, POST, etc)
     ///   - json: the json object (optional)
-    convenience init(apiKey:String, endPoint: String, method: HttpMethod, json: NSDictionary?) {
+    convenience init(apiKey:String, endPoint: String, method: HttpMethod, userAgent: String, json: NSDictionary?) {
         
         self.init()
         
@@ -29,6 +29,7 @@ final class NetworkRequest {
             apiKey: apiKey,
             endPoint: endPoint,
             method: method,
+            userAgent: userAgent,
             json: json)
     }
     
@@ -113,13 +114,15 @@ final class NetworkRequest {
     ///   - apiKey: the API key of the E-goi account
     ///   - endPoint: the endpoint
     ///   - method: the http method
+    ///   - userAgent: the user agent to identify the request
     ///   - json: the json object
     private func configureRequest(
         apiKey: String,
         endPoint: String,
         method: HttpMethod,
-        json: NSDictionary?) {
-        
+        userAgent: String = "E-goi/Unknown (iOS)",
+        json: NSDictionary?
+    ) {
         guard let url = URL(string: endPoint) else {
             print("Error creating URL for \(endPoint)")
             return
@@ -133,7 +136,7 @@ final class NetworkRequest {
         self.request?.httpMethod = method.rawValue
         
         request?.addValue(apiKey, forHTTPHeaderField: "ApiKey")
-        request?.addValue("E-goi", forHTTPHeaderField: "User-Agent")
+        request?.addValue(userAgent, forHTTPHeaderField: "User-Agent")
         
         if (method == .POST || method == .PUT) {
             request?.addValue(
