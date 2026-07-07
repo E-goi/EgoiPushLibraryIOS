@@ -25,6 +25,12 @@ public final class EgoiPushLibrary {
     var dialogCallBack: ((EGoiMessage) -> Void)?
     var deepLinkCallBack: ((EGoiMessage) -> Void)?
     
+    internal static let appGroup = "group.com.egoiapp.sdk"
+    internal static let sdkVersion: String = {
+        let bundle = Bundle(for: EgoiPushLibrary.self)
+        return bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unkown"
+    }()
+    
     /// Initiate the E-goi's library
     /// - Parameters:
     ///   - appId: The ID of the E-goi's app
@@ -38,11 +44,26 @@ public final class EgoiPushLibrary {
         dialogCallBack: ((EGoiMessage) -> Void)? = nil,
         deepLinkCallBack: ((EGoiMessage) -> Void)? = nil
     ) {
-        self.appId = appId
-        self.apiKey = apiKey
+        guard !appId.isEmpty else {
+            print(EgoiError.missingAppId.rawValue)
+            return
+        }
+        
+        guard !apiKey.isEmpty else {
+            print(EgoiError.missingApiKey.rawValue)
+            return
+        }
+        
         self.geoEnabled = geoEnabled
         self.dialogCallBack = dialogCallBack
         self.deepLinkCallBack = deepLinkCallBack
+        
+        // Save App ID and API key to shared UserDefaults of the provided App Group
+        if let sharedDefaults = UserDefaults(suiteName: EgoiPushLibrary.appGroup) {
+            sharedDefaults.set(appId, forKey: "\(EgoiPushLibrary.appGroup).\(EgoiConstant.appIdField.rawValue)")
+            sharedDefaults.set(apiKey, forKey: "\(EgoiPushLibrary.appGroup).\(EgoiConstant.apiKeyField.rawValue)")
+            sharedDefaults.set("E-goi/\(EgoiPushLibrary.sdkVersion) (iOS)", forKey: "\(EgoiPushLibrary.appGroup).\(EgoiConstant.userAgentField.rawValue)")
+        }
         
         // Initialize Handlers
         notificationHandler = NotificationHandler()
@@ -173,9 +194,7 @@ public final class EgoiPushLibrary {
     ///   - event: The interaction of the user
     ///   - message: The notification the user interacted with
     public func registerEvent(_ event: String, message: EGoiMessage) {
-        guard let apiKey = self.apiKey,
-              let appId = self.appId,
-              message.data.contactId != "",
+        guard message.data.contactId != "",
               message.data.messageHash != ""
         else {
             return
@@ -189,8 +208,6 @@ public final class EgoiPushLibrary {
             }
             
             PushNetworking.sendEvent(
-                appId: appId,
-                apiKey: apiKey,
                 contactId: message.data.contactId,
                 messageHash: message.data.messageHash,
                 mailingId: message.data.mailingId,
@@ -223,14 +240,7 @@ public final class EgoiPushLibrary {
             return
         }
         
-        guard let wrappedApiKey = self.apiKey, let wrappedAppId = self.appId else {
-            callback(false, "Account configurations missing.")
-            return
-        }
-        
         PushNetworking.sendToken(
-            appId: wrappedAppId,
-            apiKey: wrappedApiKey,
             field: self.field,
             value: self.value,
             token: wrappedToken

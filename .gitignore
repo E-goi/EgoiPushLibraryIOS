@@ -1,5 +1,39 @@
-.DS_Store
-Example/Pods/
+# Xcode
+# ========================
+build/
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# User filters and settings
+# ========================
+xcuserdata/
 *.xcuserstate
-GoogleService-Info.plist
+*.xcbkptlist
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Swift Package Manager
+# ========================
+.build/
+.swiftpm/xcode/xcuserdata/
+
+# CocoaPods (Uncomment if you want to ignore the Pods directory)
+# ========================
+Example/Pods/
+
+# Carthage
+# ========================
+Carthage/Build/
+
+# macOS system files
+# ========================
+.DS_Store
+*.swp
+lockfile.lock
 .idea/
+.vscode
+GoogleService-Info.plist
