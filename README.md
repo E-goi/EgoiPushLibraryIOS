@@ -1,10 +1,20 @@
-# What's new in version 2.3.3?
+# What's new in version 2.4.0?
 
-### PATCH
+### MINOR
 
 #### HTTP requests identification
 
-Added an identifier to the HTTP requests.
+Added the version of the SDK and OS to the request's UserAgent made to E-goi's API.
+
+#### Received event
+
+Moved the register of the received event to the NSE (Notification Service Extension).<br>
+You should also make this update on your own NSE.<br>
+Look at [NotificationService](Example/NotificationService/NotificationService.swift) for reference.
+
+#### UserDefaults
+
+Configurations provided to the SDK are now saved in a shared UserDefaults.
 
 # EgoiPushLibrary
 

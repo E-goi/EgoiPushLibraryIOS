@@ -50,6 +50,8 @@ class NotificationHandler {
             return
         }
         
+        EgoiPushLibrary.shared.registerEvent(EventType.RECEIVED.rawValue, message: message)
+        
         let request = createRequest(message: message)
         
         guard let wrapperRequest = request else {
@@ -111,8 +113,6 @@ class NotificationHandler {
             }
         }
         
-        EgoiPushLibrary.shared.registerEvent(EventType.RECEIVED.rawValue, message: message)
-        
         switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
                 if message.data.actions.text != "" && message.data.actions.type != "" && message.data.actions.url != "" && message.data.actions.textCancel != "" {
@@ -144,7 +144,7 @@ class NotificationHandler {
                 }
                 break
                     
-            case "close":
+            case UNNotificationDismissActionIdentifier, "close":
                 EgoiPushLibrary.shared.registerEvent(EventType.CLOSE.rawValue, message: message)
                 break
                     

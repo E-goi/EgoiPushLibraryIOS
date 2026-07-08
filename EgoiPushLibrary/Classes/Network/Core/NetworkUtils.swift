@@ -38,4 +38,22 @@ final class NetworkUtils {
             return nil
         }
     }
+    
+    static func retrieveAuthenticationData() -> (appId: String, apiKey: String, userAgent: String)? {
+        let sharedDefaults = UserDefaults(suiteName: EgoiPushLibrary.appGroup)
+        
+        guard let appId = sharedDefaults?.string(forKey: "\(EgoiPushLibrary.appGroup).\(EgoiConstant.appIdField.rawValue)") else {
+            print(EgoiError.missingAppId.rawValue)
+            return nil
+        }
+        
+        guard let apiKey = sharedDefaults?.string(forKey: "\(EgoiPushLibrary.appGroup).\(EgoiConstant.apiKeyField.rawValue)") else {
+            print(EgoiError.missingAppId.rawValue)
+            return nil
+        }
+        
+        let userAgent = sharedDefaults?.string(forKey: "\(EgoiPushLibrary.appGroup).\(EgoiConstant.userAgentField.rawValue)") ?? "E-goi/Unknown (iOS)"
+        
+        return (appId, apiKey, userAgent)
+    }
 }
