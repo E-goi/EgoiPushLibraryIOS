@@ -4,6 +4,8 @@
 //
 //  Created by João Silva on 29/11/2021.
 //
+import Foundation
+import UserNotifications
 
 class NotificationCenterHandler: NSObject, UNUserNotificationCenterDelegate {
     private let userNotificationCenter = UNUserNotificationCenter.current()
